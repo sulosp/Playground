@@ -8,3 +8,5 @@ class Example{
 		System.out.println("Average : "+avg);
 	} 
 }
+
+
