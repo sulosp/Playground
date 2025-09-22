@@ -11,12 +11,41 @@
 </head>
 
 <body>
-
+    <h1>Cart Quantity</h1>
     <div>
-        <button onClick = "console.log(1)">Add to the cart</button>
-    </div>
-   <script>
+        
+        <button onClick = " 
+        
+        console.log(`Cart Quantity : ${cartQuantity}`);
+        
+        ">Show Quantity</button>
 
+
+        <button onClick = " 
+        cartQuantity = cartQuantity +1;
+        console.log(`Cart Quantity : ${cartQuantity}`);
+        ">Add to the cart</button>
+
+        <button onClick = "
+        cartQuantity = cartQuantity + 2;
+        console.log(`Cart Quantity : ${cartQuantity}`); 
+        ">+2</button>
+        
+        <button onClick = "
+        cartQuantity = cartQuantity + 3;
+        console.log(`Cart Quantity : ${cartQuantity}`)
+        ">+3</button>
+        
+        <button onClick = "
+        cartQuantity = 0;
+        console.log(`cart was reset`);
+        console.log(`Cart Quantity : ${cartQuantity}`);
+        ">Reset Cart</button>        
+
+    </div>
+
+   <script>
+    let cartQuantity = 0;
    </script>
 </body>
 
