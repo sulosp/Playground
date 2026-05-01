@@ -1,33 +1,29 @@
-<!Doctype html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Index</title>
-        <script>
-let name = "Kamal";
-let age = 30;
-let isStudent = true;
-let hobbies = ["Reading", "Traveling", "Cooking"];
-let person = {
-    name: "Kamal",  
-    age: 30,
-    isStudent: true
-};
-let greet = function() {
-    console.log("Hello, " + name + "!");        };
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index</title>
+    <script>
 
-    console.log(typeof greet);
-    console.log(typeof hobbies);
+     let student = {
+        name: "Kamal";
+        address : "address 1";
+        sayHi : function(){
+            console.log("Hi, I am " + this.name);
+        }
+     }
 
-    //this is a comment
+        student.sayHi();
 
-    /* this is a multi-line comment
-    it can span multiple lines */
+    </script>
 
-    
-        </script>
-    </head>
-    <body>
-        <h1>Index</h1>      
-    </body>
+  </head>
+
+  <body>
+
+    <h1>Index</h1>
+
+  </body>
+
 </html>
