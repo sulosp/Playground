@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yelp Reviews | Mobile Dog Grooming</title>
+    <link rel="stylesheet" href="widget.css">
+</head>
+
+<body>
+    <div id="mdg-yelp-widget"></div>
+    <script src="widget.js"></script>
+    <script>
+        MDG_YelpWidget.init(document.getElementById('mdg-yelp-widget'), {
+            jsonUrl: new URL('yelp-reviews.json', window.location.href).href
+        });
+    </script>
+</body>
+
+</html>
