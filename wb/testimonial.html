@@ -1,0 +1,474 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,opsz,wght@0,12..72,400;0,12..72,500;0,12..72,600&display=swap" rel="stylesheet">
+
+<style>
+  html:has(#jsbm-testimonial-carousel),
+  body:has(#jsbm-testimonial-carousel) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .testimonial-carousel,
+  .testimonial-carousel *,
+  .testimonial-carousel *::before,
+  .testimonial-carousel *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .testimonial-carousel {
+    --color-navy: #12234f;
+    --color-accent: #5d84c5;
+    --color-card-bg: rgba(93, 132, 197, 0.1);
+    --radius-lg: 16px;
+    --font: "Mona Sans", system-ui, sans-serif;
+    --card-width: 370px;
+    --card-height: auto;
+    --fade-color: #fff;
+
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--font);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 54px;
+  }
+
+  .elementor-widget-container:has(#jsbm-testimonial-carousel),
+  .elementor-element:has(#jsbm-testimonial-carousel) {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .testimonial-carousel__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 1080px;
+  }
+
+  .testimonial-carousel__eyebrow {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-accent);
+  }
+
+  .testimonial-carousel__title {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    color: var(--color-navy);
+  }
+
+  .testimonial-carousel__viewport {
+    position: relative;
+    width: 100%;
+    height: var(--card-height);
+    overflow: hidden;
+    container-type: inline-size;
+    container-name: testimonial-viewport;
+  }
+
+  .testimonial-carousel__viewport::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(140px, 30%);
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.65) 45%,
+      var(--fade-color) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.35s ease;
+  }
+
+  .testimonial-carousel__viewport.is-at-end::after {
+    opacity: 0;
+  }
+
+  .testimonial-carousel__track {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .testimonial-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-card {
+    position: relative;
+    flex: 0 0 var(--card-width);
+    width: var(--card-width);
+    height: auto;
+    padding: 36px;
+    border-radius: var(--radius-lg);
+    background: var(--color-card-bg);
+    overflow: hidden;
+    scroll-snap-align: start;
+    scroll-margin-inline: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .testimonial-card__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .testimonial-card__stars {
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #f4b400;
+    flex-shrink: 0;
+  }
+
+  .testimonial-card__quote {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-navy);
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .testimonial-card__author {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-navy);
+    word-break: break-word;
+  }
+
+  .testimonial-carousel__dots {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .testimonial-carousel__dot {
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    padding: 0;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .testimonial-carousel__dot.is-active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: scale(1.15);
+  }
+
+  .testimonial-carousel__dot:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 1024px) {
+    .testimonial-carousel {
+      max-width: calc(1024px - 80px);
+      padding-inline: 40px;
+      width: 100%;
+    }
+
+    .testimonial-carousel__dots {
+      max-width: 100%;
+      justify-content: center;
+      align-self: center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .testimonial-carousel {
+      gap: 32px;
+      max-width: calc(767px - 40px);
+      padding-inline: 20px;
+      align-self: center;
+    }
+
+    .testimonial-carousel__title {
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    .testimonial-carousel__track {
+      scroll-padding-inline: 0;
+      padding-inline: 0;
+    }
+
+    .testimonial-card {
+      flex: 0 0 100cqw;
+      width: 100cqw;
+      scroll-snap-align: center;
+    }
+
+    .testimonial-carousel__dots {
+      max-width: 100%;
+      justify-content: center;
+      align-self: center;
+    }
+
+    .testimonial-carousel__viewport::after {
+      display: none;
+    }
+  }
+</style>
+
+<div class="testimonial-carousel" id="jsbm-testimonial-carousel" aria-label="Client testimonials">
+ 
+
+  <div class="testimonial-carousel__viewport">
+    <div class="testimonial-carousel__track">
+
+      <article class="testimonial-card">
+        <div class="testimonial-card__content">
+          <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-card__quote">"I manage our office facilities and we have been using J&S for the last 2 years. They have been wonderful to work with and are always on top of any requests we ask of them. They value their customers and have always been great. <br>
+
+Definitely recommend to any office looking for janitorial services."</p>
+          <p class="testimonial-card__author">YM M.</p>
+        </div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-card__content">
+          <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="testimonial-card__quote">"The company I work for has been working with J&S Building for the last year.<br>
+
+I appreciate when they call monthly to check in and also do monthly inspections with us to see if there is anything they see needs improvement from their cleaners.<br>
+
+Love their cleaning crew.
+Highly recommend their services, thank you for the partnership!"</p>
+          <p class="testimonial-card__author">	
+Terri K.</p>
+        </div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-card__content">
+          <div class="testimonial-card__stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <p class="testimonial-card__quote">"J&S has been cleaning our construction trailer for months and have done a great job. They are also quick to respond and schedule the cleaning as needed.
+
+"</p>
+          <p class="testimonial-card__author">	
+Jonnathan G.</p>
+        </div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-card__content">
+          <div class="testimonial-card__stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <p class="testimonial-card__quote">"Excellent service the classrooms were cleaned beyond expectations. Thank you so much will definitely schedule again and recommend your services!
+
+"</p>
+          <p class="testimonial-card__author">Felice M.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="testimonial-carousel__dots" role="tablist" aria-label="Testimonial pagination"></div>
+</div>
+
+<script>
+  (function () {
+    var carousel = document.getElementById("jsbm-testimonial-carousel");
+    if (!carousel) return;
+
+    var viewport = carousel.querySelector(".testimonial-carousel__viewport");
+    var track = carousel.querySelector(".testimonial-carousel__track");
+    var dotsContainer = carousel.querySelector(".testimonial-carousel__dots");
+    var cards = carousel.querySelectorAll(".testimonial-card");
+    var pageCount = Math.max(1, cards.length - 1);
+    var activePage = 0;
+    var isProgrammaticScroll = false;
+    var scrollLockTimer = null;
+    var mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    function isMobileView() {
+      return mobileQuery.matches;
+    }
+
+    function getMaxScroll() {
+      return Math.max(0, track.scrollWidth - track.clientWidth);
+    }
+
+    function updateEdgeFade() {
+      if (!viewport || !track) return;
+
+      var maxScroll = getMaxScroll();
+      var atEnd = maxScroll <= 1 || track.scrollLeft >= maxScroll - 1;
+      viewport.classList.toggle("is-at-end", atEnd);
+    }
+
+    function getCardIndexForPage(pageIndex) {
+      if (cards.length <= 1 || pageCount <= 1) return 0;
+      return Math.round((pageIndex / (pageCount - 1)) * (cards.length - 1));
+    }
+
+    function getPageIndexForCard(cardIndex) {
+      if (cards.length <= 1 || pageCount <= 1) return 0;
+      return Math.round((cardIndex / (cards.length - 1)) * (pageCount - 1));
+    }
+
+    function getScrollLeftForPage(pageIndex) {
+      if (isMobileView() && cards.length) {
+        var card = cards[getCardIndexForPage(pageIndex)];
+        if (!card) return 0;
+        var maxScroll = getMaxScroll();
+        var centered = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+        return Math.max(0, Math.min(centered, maxScroll));
+      }
+
+      var maxScroll = getMaxScroll();
+      if (pageCount <= 1) return 0;
+      return (maxScroll / (pageCount - 1)) * pageIndex;
+    }
+
+    function getActivePageFromScroll() {
+      if (isMobileView() && cards.length) {
+        var trackCenter = track.scrollLeft + track.clientWidth / 2;
+        var closestCard = 0;
+        var closestDistance = Infinity;
+
+        cards.forEach(function (card, i) {
+          var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          var distance = Math.abs(trackCenter - cardCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestCard = i;
+          }
+        });
+
+        return getPageIndexForCard(closestCard);
+      }
+
+      var maxScroll = getMaxScroll();
+      if (maxScroll <= 0) return 0;
+
+      var ratio = track.scrollLeft / maxScroll;
+      return Math.max(0, Math.min(pageCount - 1, Math.round(ratio * (pageCount - 1))));
+    }
+
+    function setActiveDot(pageIndex) {
+      activePage = pageIndex;
+      var dots = dotsContainer.querySelectorAll(".testimonial-carousel__dot");
+      dots.forEach(function (dot, i) {
+        var isActive = i === pageIndex;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    }
+
+    function scrollToPage(pageIndex, smooth) {
+      if (!track) return;
+
+      var clamped = Math.max(0, Math.min(pageIndex, pageCount - 1));
+      isProgrammaticScroll = true;
+      clearTimeout(scrollLockTimer);
+      setActiveDot(clamped);
+
+      track.scrollTo({
+        left: getScrollLeftForPage(clamped),
+        behavior: smooth === false ? "auto" : "smooth"
+      });
+
+      scrollLockTimer = setTimeout(function () {
+        isProgrammaticScroll = false;
+        setActiveDot(clamped);
+        updateEdgeFade();
+      }, smooth === false ? 100 : 700);
+
+      updateEdgeFade();
+    }
+
+    function syncActiveDotFromScroll() {
+      if (!track) return;
+
+      updateEdgeFade();
+
+      if (isProgrammaticScroll) return;
+
+      var pageIndex = getActivePageFromScroll();
+      if (pageIndex !== activePage) {
+        setActiveDot(pageIndex);
+      }
+    }
+
+    for (var i = 0; i < pageCount; i++) {
+      (function (pageIndex) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "testimonial-carousel__dot" + (pageIndex === 0 ? " is-active" : "");
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", "Go to testimonial page " + (pageIndex + 1));
+        dot.setAttribute("aria-selected", pageIndex === 0 ? "true" : "false");
+        dot.addEventListener("click", function () {
+          scrollToPage(pageIndex, true);
+        });
+        dotsContainer.appendChild(dot);
+      })(i);
+    }
+
+    track.addEventListener("scroll", function () {
+      window.requestAnimationFrame(syncActiveDotFromScroll);
+    }, { passive: true });
+
+    if ("onscrollend" in track) {
+      track.addEventListener("scrollend", syncActiveDotFromScroll, { passive: true });
+    }
+
+    window.addEventListener("resize", function () {
+      scrollToPage(activePage, false);
+      updateEdgeFade();
+    });
+
+    mobileQuery.addEventListener("change", function () {
+      scrollToPage(activePage, false);
+    });
+
+    scrollToPage(0, false);
+  })();
+</script>
