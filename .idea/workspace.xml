@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="24bb7276-da83-4575-a55c-67af683ed153" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/py/arithmetic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/sequence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.html/counter/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.html/counter/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.html/counter/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Playground.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Playground.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.java/Example.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.java/Example.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.js/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/99bottlesOfBeer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/bankpint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/fizzBuzz.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/guessTheNumber.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/magicball.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/roversystem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.py/sortingHat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/regression.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/toydata_x.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/toydata_y.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="10" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.000242454304837" />
+      <entry key="MS500" value="1.199186391257395" />
+      <entry key="S2" value="2.1634002430684145" />
+      <entry key="S5" value="3.388911799878447" />
+      <entry key="S10" value="4.343936540918039" />
+      <entry key="S30" value="5.478895782266242" />
+      <entry key="S60" value="6.837650279528441" />
+      <entry key="M2" value="9.559719520957888" />
+      <entry key="M5" value="14.475426690759809" />
+      <entry key="M10" value="19.317912172223853" />
+      <entry key="M15" value="23.29577704968361" />
+      <entry key="M30" value="37.92414900034081" />
+      <entry key="H1" value="71.71473111103143" />
+      <entry key="H2" value="117.73486493678745" />
+      <entry key="H4" value="158.19374896393072" />
+      <entry key="D1" value="207.03433880604015" />
+      <entry key="W1" value="217.2389669974078" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.0613183918413546E-269" />
+      <entry key="S10" value="3.2577881942221995E-135" />
+      <entry key="S30" value="1.482430295188405E-45" />
+      <entry key="S60" value="3.850234142475496E-23" />
+      <entry key="M2" value="6.2050254999801005E-12" />
+      <entry key="M5" value="3.290122519024215E-5" />
+      <entry key="M10" value="0.005876589377158867" />
+      <entry key="M15" value="0.035959742042301956" />
+      <entry key="M30" value="0.3041514305748077" />
+      <entry key="H1" value="1.189749010762937" />
+      <entry key="H2" value="2.5929512561455152" />
+      <entry key="H4" value="3.9169117044069592" />
+      <entry key="D1" value="5.583225972388319" />
+      <entry key="W1" value="5.938479089515492" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.795746094457174" />
+      <entry key="MS500" value="1.1397477769568087" />
+      <entry key="S2" value="1.9517637959292835" />
+      <entry key="S5" value="3.141694464287893" />
+      <entry key="S10" value="4.151280541577151" />
+      <entry key="S30" value="5.386816830486471" />
+      <entry key="S60" value="6.776036777129734" />
+      <entry key="M2" value="9.511804668898346" />
+      <entry key="M5" value="14.442341824400517" />
+      <entry key="M10" value="19.30085001597639" />
+      <entry key="M15" value="23.313359015688395" />
+      <entry key="M30" value="38.21394503038024" />
+      <entry key="H1" value="72.89161329269722" />
+      <entry key="H2" value="120.31757274366542" />
+      <entry key="H4" value="162.10387757028553" />
+      <entry key="D1" value="212.61610182977776" />
+      <entry key="W1" value="223.17722720103623" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3H6FI9LDyWNsga8aD9zPguAbokL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.arithmetic.executor": "Run",
+    "Python.demo.executor": "Run",
+    "Python.sequence.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="arithmetic" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Playground" />
+      <option name="ENV_FILES" value="$PROJECT_DIR$/py/demo.py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="D:\github\Playground\py\arithmetic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-c59985aa861c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.24374.152" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="24bb7276-da83-4575-a55c-67af683ed153" name="Changes" comment="" />
+      <created>1785180541219</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1785180541219</updated>
+      <workItem from="1785180550046" duration="2358000" />
+      <workItem from="1785220396134" duration="7246000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Playground$demo.coverage" NAME="demo Coverage Results" MODIFIED="1785225554014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
+    <SUITE FILE_PATH="coverage/Playground$sequence.coverage" NAME="sequence Coverage Results" MODIFIED="1785229306195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py" />
+  </component>
+</project>
