@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <style>
+
+    .yl-qualifier {
+      --color-accent: #f5c518;
+      --color-dark: #1b1e24;
+      --color-bg: rgba(27, 30, 36, 0.8);
+      --color-white: #ffffff;
+      --color-label: #f6f2e8;
+      --color-muted: #8b90a0;
+      --color-border: rgba(86, 92, 107, 0.4);
+      --color-btn: #565c6b;
+      --color-btn-disabled-bg: rgba(86, 92, 107, 0.1);
+      --color-btn-disabled-text: #565c6b;
+      --color-placeholder: rgba(255, 255, 255, 0.4);
+      --color-progress-fill: #d9d9d9;
+      --color-scale-bg: rgba(86, 92, 107, 0.1);
+      --font: "Bricolage Grotesque", system-ui, sans-serif;
+
+      width: 100%;
+      max-width: 480px;
+      font-family: var(--font);
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 14, "wdth" 100;
+      backdrop-filter: blur(75px);
+      -webkit-backdrop-filter: blur(75px);
+      background: var(--color-bg);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      color: var(--color-white);
+    }
+
+    .yl-qualifier__header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .yl-qualifier.is-submitted .yl-qualifier__header {
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .yl-qualifier.is-submitted .yl-qualifier__badge {
+      display: none;
+    }
+
+    .yl-qualifier__badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      padding: 4px 8px;
+      border: 1px solid var(--color-accent);
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: var(--color-accent);
+    }
+
+    .yl-qualifier__title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 8px;
+      width: 100%;
+    }
+
+    .yl-qualifier.is-submitted .yl-qualifier__title-block {
+      padding-top: 0;
+      align-items: center;
+    }
+
+    .yl-qualifier__title {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 0 !important;
+      margin-top:0 !important;
+    }
+
+    .yl-qualifier.is-submitted .yl-qualifier__title {
+      color: var(--color-accent);
+    }
+
+    .yl-qualifier__subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      margin-bottom: 0 !important;
+      margin-top:0 !important;
+    }
+
+    .yl-qualifier.is-submitted .yl-qualifier__subtitle {
+      text-transform: none;
+    }
+
+    .yl-qualifier__subtitle-accent {
+      color: var(--color-accent);
+    }
+
+    .yl-qualifier__progress-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .yl-qualifier__step-label { color: var(--color-white); }
+    .yl-qualifier__step-name { color: var(--color-muted); }
+
+    .yl-qualifier__progress {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .yl-qualifier__progress-track {
+      width: 100%;
+      padding: 2px;
+      border-radius: 50px;
+      background: var(--color-border);
+    }
+
+    .yl-qualifier__progress-fill {
+      height: 6px;
+      border-radius: 50px;
+      background: var(--color-progress-fill);
+      width: 25%;
+      transition: width 0.3s ease;
+    }
+
+    .yl-qualifier__step {
+      display: none;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .yl-qualifier__step.is-active { display: flex; }
+
+    .yl-qualifier__row {
+      display: flex;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .yl-qualifier__row--spaced { gap: 20px; }
+
+    .yl-qualifier__field {
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .yl-qualifier__field--full {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
+    .yl-qualifier__label {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+      color: var(--color-label);
+      margin-bottom:10px;
+    }
+
+    .yl-qualifier__required { color: var(--color-accent); }
+
+    .yl-qualifier__input,
+    .yl-qualifier__textarea {
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      background: transparent;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+      color: var(--color-white);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .yl-qualifier__input::placeholder,
+    .yl-qualifier__textarea::placeholder {
+      color: var(--color-placeholder);
+    }
+
+    .yl-qualifier__textarea {
+      min-height: 96px;
+      resize: vertical;
+      text-transform: none;
+      align-items: flex-start;
+    }
+
+    .yl-qualifier__textarea--issue {
+      height: 125px;
+      min-height: 125px;
+      resize: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .yl-qualifier__input:focus,
+    .yl-qualifier__textarea:focus {
+      border-bottom-color: var(--color-accent);
+    }
+
+    .yl-qualifier__input.is-invalid,
+    .yl-qualifier__textarea.is-invalid {
+      border-bottom-color: #e05a5a;
+    }
+
+    .yl-qualifier__choice-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 100%;
+      border: none;
+      padding:0px;
+    }
+
+    .yl-qualifier__choice-section--tight { gap: 4px; }
+
+    .yl-qualifier__block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .yl-qualifier__block--tight {
+      gap: 4px;
+    }
+
+    .yl-qualifier__choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+
+    .yl-qualifier__choice-grid--3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .yl-qualifier__choice-grid--acquire .yl-qualifier__choice-option {
+      min-width: 150px;
+      height: 44px;
+    }
+
+    .yl-qualifier__choice-option,
+    .yl-qualifier__vehicle-option {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .yl-qualifier__vehicle-option {
+      padding: 10px 10px 10px 42px;
+    }
+
+    .yl-qualifier__choice-option:hover,
+    .yl-qualifier__vehicle-option:hover,
+    .yl-qualifier__scale-option:hover {
+      border-color: rgba(245, 197, 24, 0.5);
+    }
+
+    .yl-qualifier__choice-option.is-selected,
+    .yl-qualifier__vehicle-option.is-selected {
+      border-color: var(--color-accent);
+      background: rgba(245, 197, 24, 0.08);
+    }
+
+    .yl-qualifier__choice-option.is-selected .yl-qualifier__choice-label,
+    .yl-qualifier__vehicle-option.is-selected .yl-qualifier__vehicle-label {
+      color: var(--color-white);
+    }
+
+    .yl-qualifier__vehicle-icon {
+      position: absolute;
+      left: 9.5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+    }
+
+    .yl-qualifier__vehicle-icon img {
+      display: block;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .yl-qualifier__choice-label,
+    .yl-qualifier__vehicle-label {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+      color: var(--color-muted);
+      text-align: center;
+      word-break: break-word;
+    }
+
+    .yl-qualifier__choice-option input,
+    .yl-qualifier__vehicle-option input,
+    .yl-qualifier__scale-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+ 
+    
+
+    .yl-qualifier__vehicle-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+
+    .yl-qualifier__scale-grid {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      width: 100%;
+    }
+
+    
+    .yl-qualifier__scale-option {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width:100%;
+      min-height: 44px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: var(--color-scale-bg);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .yl-qualifier__scale-option.is-selected {
+      background: var(--color-white);
+    }
+
+    .yl-qualifier__scale-label {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+      color: var(--color-muted);
+    }
+
+    .yl-qualifier__scale-option.is-selected .yl-qualifier__scale-label {
+      color: var(--color-dark);
+    }
+
+    .yl-qualifier__info {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      max-width: 100%;
+      padding: 16px;
+      background: rgba(245, 197, 24, 0.1);
+    }
+
+    .yl-qualifier__info-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .yl-qualifier__info-icon img {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    .yl-qualifier__info-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .yl-qualifier__info-title {
+      font-weight: 500;
+      line-height: 24px;
+      color: var(--color-white);
+    }
+
+    .yl-qualifier__info-subtitle {
+      font-weight: 200;
+      line-height: 20px;
+      color: var(--color-white);
+    }
+
+    .yl-qualifier__error {
+      display: none;
+      font-size: 12px;
+      line-height: 18px;
+      color: #e05a5a;
+      margin-top: 4px;
+    }
+
+    .yl-qualifier__error.is-visible { display: block; }
+
+    .yl-qualifier__success-extra {
+      display: none;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+    .yl-qualifier__btn--back.is-enabled:hover,
+    .yl-qualifier__btn--next:hover{
+      background: var(--color-accent) !important;
+      color: #0f1115 !important;
+    }
+    .yl-qualifier.is-submitted .yl-qualifier__success-extra {
+      display: flex;
+    }
+
+    .yl-qualifier__reference {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 8px;
+      border: 1px solid var(--color-accent);
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: var(--color-accent);
+    }
+
+    .yl-qualifier__copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-color: transparent !important;
+      cursor: pointer;
+      padding: 0;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .yl-qualifier__summary {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 393px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+    }
+
+    .yl-qualifier__summary-row {
+      display: flex;
+      gap: 4px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(86, 92, 107, 0.15);
+    }
+
+    .yl-qualifier__summary-label {
+      flex: 1;
+      color: var(--color-muted);
+      text-align: left;
+    }
+
+    .yl-qualifier__summary-value {
+      flex: 1;
+      color: var(--color-white);
+      text-align: right;
+    }
+
+    .yl-qualifier__confirm-note {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 22px;
+      color: var(--color-white);
+      max-width: 393px;
+    }
+
+    .yl-qualifier__confirm-note a {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    .yl-qualifier__restart {
+      width: 100%;
+      padding: 10px 24px;
+      border: none;
+      background: var(--color-border);
+      color: var(--color-label);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+    .yl-qualifier__restart:hover { opacity: 0.9; }
+
+    .yl-qualifier__nav {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      gap: 16px;
+    }
+
+    .yl-qualifier__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+      padding: 10px 24px;
+      border: none;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 20px;
+      cursor: pointer;
+      transition: opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .yl-qualifier__btn--back {
+      background: var(--color-btn-disabled-bg) !important;
+      color: var(--color-btn-disabled-text) !important;
+      cursor: default;
+    }
+
+    .yl-qualifier__btn--back.is-enabled {
+      background: var(--color-bg)  !important;
+      color: var(--color-accent) !important;
+      cursor: pointer;
+    }
+
+    .yl-qualifier__btn--next {
+      background: var(--color-bg) !important;
+      color: var(--color-accent) !important;
+    }
+
+    .yl-qualifier__btn--next.is-accent {
+      background: var(--color-dark) !important;
+      color: var(--color-accent)  !important;
+    }
+
+    .yl-qualifier__btn--submit {
+      background: var(--color-accent) !important;
+      color: var(--color-dark)!important;
+      min-width: auto;
+      white-space: nowrap;
+    }
+
+    .yl-qualifier__btn.is-hidden,
+    .yl-qualifier__btn[hidden] {
+      display: none !important;
+    }
+
+    .yl-qualifier__nav-action {
+      margin-left: auto;
+    }
+
+    .yl-qualifier__btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .yl-qualifier.is-submitted .yl-qualifier__progress,
+    .yl-qualifier.is-submitted .yl-qualifier__steps,
+    .yl-qualifier.is-submitted .yl-qualifier__nav {
+      display: none;
+    }
+
+    .yl-qualifier.is-submitting .yl-qualifier__btn--submit {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      .yl-qualifier { padding: 24px; gap: 28px; }
+      .yl-qualifier__row { flex-direction: column; }
+      .yl-qualifier__vehicle-grid,
+      .yl-qualifier__choice-grid,
+      .yl-qualifier__choice-grid--3 { grid-template-columns: 1fr; }
+      .yl-qualifier__scale-grid { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <form class="yl-qualifier" id="yl-qualifier-form" action="#" method="post" novalidate>
+    <header class="yl-qualifier__header">
+      <span class="yl-qualifier__badge">30-Second Qualifier</span>
+      <div class="yl-qualifier__title-block">
+        <h2 class="yl-qualifier__title" data-form-title>See if your vehicle qualifies</h2>
+        <p class="yl-qualifier__subtitle" data-form-subtitle>
+          Answer a few questions. Our team reviews every submission personally.
+          <span class="yl-qualifier__subtitle-accent">All fields marked * are required.</span>
+        </p>
+      </div>
+    </header>
+  
+    <div class="yl-qualifier__progress" aria-live="polite" data-form-progress>
+      <div class="yl-qualifier__progress-header">
+        <span class="yl-qualifier__step-label" data-step-label>Step 1 of 4</span>
+        <span class="yl-qualifier__step-name" data-step-name>Vehicle Type</span>
+      </div>
+      <div class="yl-qualifier__progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Form progress">
+        <div class="yl-qualifier__progress-fill" data-progress-fill></div>
+      </div>
+    </div>
+  
+    <div class="yl-qualifier__steps">
+      <!-- Step 1 -->
+      <div class="yl-qualifier__step is-active" data-step="1">
+        <div class="yl-qualifier__row">
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-model">Model <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="text" id="yl-model" name="model" placeholder="JYK (Required)" required autocomplete="off">
+          </div>
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-year">Vehicle Year <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="text" id="yl-year" name="vehicle_year" placeholder="2023 (Required)" required inputmode="numeric" pattern="(19|20)\d{2}" autocomplete="off">
+          </div>
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-make">Make <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="text" id="yl-make" name="make" placeholder="Toyota (Required)" required autocomplete="off">
+          </div>
+        </div>
+        <fieldset class="yl-qualifier__choice-section">
+          <legend class="yl-qualifier__label">Vehicle Type? <span class="yl-qualifier__required">*</span></legend>
+          <div class="yl-qualifier__vehicle-grid" role="radiogroup" aria-label="Vehicle type">
+            <label class="yl-qualifier__vehicle-option"><input type="radio" name="vehicle_type" value="car" required><span class="yl-qualifier__vehicle-icon"><img data-asset="car.svg" alt="" width="24" height="24"></span><span class="yl-qualifier__vehicle-label">Car</span></label>
+            <label class="yl-qualifier__vehicle-option"><input type="radio" name="vehicle_type" value="truck-suv"><span class="yl-qualifier__vehicle-icon"><img data-asset="suvs.svg" alt="" width="24" height="24"></span><span class="yl-qualifier__vehicle-label">Truck / SUVs</span></label>
+            <label class="yl-qualifier__vehicle-option"><input type="radio" name="vehicle_type" value="motorcycles"><span class="yl-qualifier__vehicle-icon"><img data-asset="motorbike.svg" alt="" width="24" height="24"></span><span class="yl-qualifier__vehicle-label">Motorcycles</span></label>
+            <label class="yl-qualifier__vehicle-option"><input type="radio" name="vehicle_type" value="boats"><span class="yl-qualifier__vehicle-icon"><img data-asset="boat.svg" alt="" width="24" height="24"></span><span class="yl-qualifier__vehicle-label">Boats</span></label>
+            <label class="yl-qualifier__vehicle-option"><input type="radio" name="vehicle_type" value="aircraft"><span class="yl-qualifier__vehicle-icon"><img data-asset="aircraft.svg" alt="" width="24" height="24"></span><span class="yl-qualifier__vehicle-label">Aircraft</span></label>
+            <label class="yl-qualifier__vehicle-option"><input type="radio" name="vehicle_type" value="rvs"><span class="yl-qualifier__vehicle-icon"><img data-asset="truck.svg" alt="" width="24" height="24"></span><span class="yl-qualifier__vehicle-label">RVs</span></label>
+          </div>
+          <p class="yl-qualifier__error" data-step-error="1">Please complete all required vehicle fields.</p>
+        </fieldset>
+      </div>
+  
+      <!-- Step 2: Acquisition & issue (Figma 36:102) -->
+      <div class="yl-qualifier__step" data-step="2">
+        <div class="yl-qualifier__block">
+          <p class="yl-qualifier__label">
+            How did you acquire it? <span class="yl-qualifier__required">*</span>
+          </p>
+          <div class="yl-qualifier__choice-grid yl-qualifier__choice-grid--acquire" role="radiogroup" aria-label="Acquisition method">
+            <label class="yl-qualifier__choice-option">
+              <input type="radio" name="acquisition_method" value="purchased-financed" required>
+              <span class="yl-qualifier__choice-label">Purchased (financed)</span>
+            </label>
+            <label class="yl-qualifier__choice-option">
+              <input type="radio" name="acquisition_method" value="purchased-full">
+              <span class="yl-qualifier__choice-label">Purchased (Paid in Full)</span>
+            </label>
+            <label class="yl-qualifier__choice-option">
+              <input type="radio" name="acquisition_method" value="leased">
+              <span class="yl-qualifier__choice-label">Leased</span>
+            </label>
+            <label class="yl-qualifier__choice-option">
+              <input type="radio" name="acquisition_method" value="not-sure">
+              <span class="yl-qualifier__choice-label">Not Sure</span>
+            </label>
+          </div>
+        </div>
+        <div class="yl-qualifier__block yl-qualifier__block--tight">
+          <label class="yl-qualifier__label" for="yl-issue">
+            What's going On? <span class="yl-qualifier__required">*</span>
+          </label>
+          <textarea class="yl-qualifier__textarea yl-qualifier__textarea--issue" id="yl-issue" name="issue_description" placeholder="Engine stalls intermittently, dealership has attempted repair twice under warranty..." required></textarea>
+        </div>
+        <p class="yl-qualifier__error" data-step-error="2">Please complete all required fields.</p>
+      </div>
+  
+      <!-- Step 3 -->
+      <div class="yl-qualifier__step" data-step="3">
+        <fieldset class="yl-qualifier__choice-section yl-qualifier__choice-section--tight">
+          <legend class="yl-qualifier__label">Repair Attempts So Far <span class="yl-qualifier__required">*</span></legend>
+          <div class="yl-qualifier__scale-grid" role="radiogroup" aria-label="Repair attempts">
+            <label class="yl-qualifier__scale-option"><input type="radio" name="repair_attempts" value="1" required><span class="yl-qualifier__scale-label">1</span></label>
+            <label class="yl-qualifier__scale-option"><input type="radio" name="repair_attempts" value="2"><span class="yl-qualifier__scale-label">2</span></label>
+            <label class="yl-qualifier__scale-option"><input type="radio" name="repair_attempts" value="3"><span class="yl-qualifier__scale-label">3</span></label>
+            <label class="yl-qualifier__scale-option"><input type="radio" name="repair_attempts" value="4+"><span class="yl-qualifier__scale-label">4+</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="yl-qualifier__choice-section">
+          <legend class="yl-qualifier__label">Is it still under factory warranty? <span class="yl-qualifier__required">*</span></legend>
+          <div class="yl-qualifier__choice-grid yl-qualifier__choice-grid--3" role="radiogroup" aria-label="Warranty status">
+            <label class="yl-qualifier__choice-option"><input type="radio" name="under_warranty" value="yes" required><span class="yl-qualifier__choice-label">Yes</span></label>
+            <label class="yl-qualifier__choice-option"><input type="radio" name="under_warranty" value="no"><span class="yl-qualifier__choice-label">No</span></label>
+            <label class="yl-qualifier__choice-option"><input type="radio" name="under_warranty" value="not-sure"><span class="yl-qualifier__choice-label">Not Sure</span></label>
+          </div>
+        </fieldset>
+        <div class="yl-qualifier__info">
+          <span class="yl-qualifier__info-icon"><img data-asset="tick.svg" alt="" width="16" height="16"></span>
+          <div class="yl-qualifier__info-text">
+            <span class="yl-qualifier__info-title">Based on what you've told us, this may qualify.</span>
+            <span class="yl-qualifier__info-subtitle">One more question and we'll have a real attorney confirm, not a bot.</span>
+          </div>
+        </div>
+        <p class="yl-qualifier__error" data-step-error="3">Please complete all required fields.</p>
+      </div>
+  
+      <!-- Step 4 -->
+      <div class="yl-qualifier__step" data-step="4">
+        <div class="yl-qualifier__row yl-qualifier__row--spaced">
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-first-name">First Name <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="text" id="yl-first-name" name="first_name" placeholder="Jane" required autocomplete="given-name">
+          </div>
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-last-name">Last Name <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="text" id="yl-last-name" name="last_name" placeholder="Rivera" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="yl-qualifier__row yl-qualifier__row--spaced">
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-phone">Phone <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="tel" id="yl-phone" name="phone" placeholder="(310) 586172369" required autocomplete="tel">
+          </div>
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-email">Email <span class="yl-qualifier__required">*</span></label>
+            <input class="yl-qualifier__input" type="email" id="yl-email" name="email" placeholder="mail@mail.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="yl-qualifier__row yl-qualifier__row--spaced">
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-city">City</label>
+            <input class="yl-qualifier__input" type="text" id="yl-city" name="city" placeholder="Santa Monica" autocomplete="address-level2">
+          </div>
+          <div class="yl-qualifier__field">
+            <label class="yl-qualifier__label" for="yl-zip">Zip Code</label>
+            <input class="yl-qualifier__input" type="text" id="yl-zip" name="zip" placeholder="90404" inputmode="numeric" autocomplete="postal-code">
+          </div>
+        </div>
+        <p class="yl-qualifier__error" data-step-error="4">Please complete all required contact fields.</p>
+      </div>
+    </div>
+  
+    <div class="yl-qualifier__success-extra" data-success-panel aria-live="polite">
+      <div class="yl-qualifier__reference">
+        <span data-reference-text>Reference #LMN-000000-0000</span>
+        <button type="button" class="yl-qualifier__copy-btn" data-copy-reference aria-label="Copy reference number"><img data-asset="copy.svg" alt="" width="24" height="24"></button>
+      </div>
+      <div class="yl-qualifier__summary" data-success-summary></div>
+      <p class="yl-qualifier__confirm-note">
+        We've also sent a confirmation to your email. Please check it over, if anything looks wrong,
+        write to us at <a href="mailto:syermian@yermianlaw.com">syermian@yermianlaw.com</a> with your reference number above.
+      </p>
+      <button type="button" class="yl-qualifier__restart" data-restart-form>Need to submit a different vehicle?</button>
+    </div>
+  
+    <div class="yl-qualifier__nav">
+      <button type="button" class="yl-qualifier__btn yl-qualifier__btn--back" data-back disabled aria-disabled="true">Back</button>
+      <button type="button" class="yl-qualifier__btn yl-qualifier__btn--next yl-qualifier__nav-action" data-next>Next</button>
+      <button type="submit" class="yl-qualifier__btn yl-qualifier__btn--submit yl-qualifier__nav-action is-hidden" data-submit hidden aria-hidden="true">Submit My Case Review</button>
+    </div>
+  </form>
+  
+  <script>
+    (function () {
+      var form = document.getElementById("yl-qualifier-form");
+      if (!form) return;
+  
+      var TOTAL_STEPS = 4;
+      var currentStep = 1;
+      var wpConfig = window.ylQualifier || {};
+      var assetsBase = wpConfig.assetsUrl || "wp-content/uploads/2026/08/";
+  
+      var stepLabels = {
+        1: "Vehicle Type",
+        2: "Acquisition & issue",
+        3: "Repair history",
+        4: "Contact Info"
+      };
+  
+      var vehicleTypeLabels = {
+        car: "Car", "truck-suv": "Truck / SUVs", motorcycles: "Motorcycles",
+        boats: "Boats", aircraft: "Aircraft", rvs: "RVs"
+      };
+  
+      var acquisitionLabels = {
+        "purchased-financed": "Purchased (financed)",
+        "purchased-full": "Purchased (Paid in Full)",
+        leased: "Leased",
+        "not-sure": "Not Sure"
+      };
+  
+      var warrantyLabels = { yes: "Yes", no: "No", "not-sure": "Not Sure" };
+  
+      var stepLabelEl = form.querySelector("[data-step-label]");
+      var stepNameEl = form.querySelector("[data-step-name]");
+      var progressFill = form.querySelector("[data-progress-fill]");
+      var progressBar = form.querySelector("[role='progressbar']");
+      var formTitle = form.querySelector("[data-form-title]");
+      var formSubtitle = form.querySelector("[data-form-subtitle]");
+      var steps = form.querySelectorAll(".yl-qualifier__step");
+      var backBtn = form.querySelector("[data-back]");
+      var nextBtn = form.querySelector("[data-next]");
+      var submitBtn = form.querySelector("[data-submit]");
+      var successPanel = form.querySelector("[data-success-panel]");
+      var referenceText = form.querySelector("[data-reference-text]");
+      var successSummary = form.querySelector("[data-success-summary]");
+      var copyBtn = form.querySelector("[data-copy-reference]");
+      var restartBtn = form.querySelector("[data-restart-form]");
+  
+      form.querySelectorAll("[data-asset]").forEach(function (img) {
+        img.src = assetsBase + img.getAttribute("data-asset");
+      });
+  
+      function bindRadioOptions(selector, selectedClass) {
+        form.querySelectorAll(selector).forEach(function (option) {
+          var radio = option.querySelector('input[type="radio"]');
+          if (!radio) return;
+          if (radio.checked) option.classList.add(selectedClass);
+          radio.addEventListener("change", function () {
+            form.querySelectorAll('input[name="' + radio.name + '"]').forEach(function (input) {
+              var opt = input.closest(selector);
+              if (opt) opt.classList.toggle(selectedClass, input.checked);
+            });
+          });
+        });
+      }
+  
+      bindRadioOptions(".yl-qualifier__vehicle-option", "is-selected");
+      bindRadioOptions(".yl-qualifier__choice-option", "is-selected");
+      bindRadioOptions(".yl-qualifier__scale-option", "is-selected");
+  
+      function getStepPanel(step) {
+        return form.querySelector('.yl-qualifier__step[data-step="' + step + '"]');
+      }
+  
+      function getStepError(step) {
+        return form.querySelector('[data-step-error="' + step + '"]');
+      }
+  
+      function clearStepErrors(step) {
+        var panel = getStepPanel(step);
+        if (!panel) return;
+        panel.querySelectorAll(".is-invalid").forEach(function (el) { el.classList.remove("is-invalid"); });
+        var error = getStepError(step);
+        if (error) error.classList.remove("is-visible");
+      }
+  
+      function validateStep(step) {
+        clearStepErrors(step);
+        var panel = getStepPanel(step);
+        if (!panel) return true;
+        var valid = true;
+        var seenRadio = {};
+  
+        panel.querySelectorAll("input, select, textarea").forEach(function (field) {
+          if (field.type === "radio") {
+            if (seenRadio[field.name]) return;
+            seenRadio[field.name] = true;
+            var group = panel.querySelectorAll('input[name="' + field.name + '"]');
+            var checked = Array.prototype.some.call(group, function (input) { return input.checked; });
+            if (group[0] && group[0].required && !checked) valid = false;
+            return;
+          }
+          if (field.required && !field.checkValidity()) {
+            field.classList.add("is-invalid");
+            valid = false;
+          }
+        });
+  
+        if (!valid) {
+          var error = getStepError(step);
+          if (error) error.classList.add("is-visible");
+          var firstInvalid = panel.querySelector(".is-invalid, :invalid");
+          if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
+        }
+        return valid;
+      }
+  
+      function getFieldValue(name) {
+        var el = form.elements[name];
+        if (!el) return "";
+        if (el.type === "radio") {
+          var checked = form.querySelector('input[name="' + name + '"]:checked');
+          return checked ? checked.value : "";
+        }
+        return el.value || "";
+      }
+  
+      function generateReference() {
+        var now = new Date();
+        var y = String(now.getFullYear()).slice(-2);
+        var m = String(now.getMonth() + 1).padStart(2, "0");
+        var d = String(now.getDate()).padStart(2, "0");
+        var rand = Math.random().toString(16).slice(2, 6).toUpperCase();
+        return "LMN-" + y + m + d + "-" + rand;
+      }
+  
+      function buildSuccessSummary(ref) {
+        var rows = [
+          { label: "Vehicle Type", value: vehicleTypeLabels[getFieldValue("vehicle_type")] || getFieldValue("vehicle_type") },
+          { label: "Model", value: getFieldValue("model") },
+          { label: "Year", value: getFieldValue("vehicle_year") }
+        ];
+        successSummary.innerHTML = "";
+        rows.forEach(function (row) {
+          var el = document.createElement("div");
+          el.className = "yl-qualifier__summary-row";
+          el.innerHTML = '<span class="yl-qualifier__summary-label">' + row.label + '</span><span class="yl-qualifier__summary-value">' + (row.value || "—") + "</span>";
+          successSummary.appendChild(el);
+        });
+        referenceText.textContent = "Reference #" + ref;
+      }
+  
+      function showSuccess(ref) {
+        form.classList.remove("is-submitting");
+        form.classList.add("is-submitted");
+        formTitle.innerHTML = "Your case review is<br>on its way to us";
+        formSubtitle.textContent = "A member of our team reads every submission personally and will follow up within one business day.";
+        buildSuccessSummary(ref);
+        successPanel.classList.add("is-visible");
+      }
+  
+      function resetForm() {
+        form.reset();
+        form.classList.remove("is-submitted", "is-submitting");
+        currentStep = 1;
+        formTitle.textContent = "See if your vehicle qualifies";
+        formSubtitle.innerHTML = 'Answer a few questions. Our team reviews every submission personally. <span class="yl-qualifier__subtitle-accent">All fields marked * are required.</span>';
+        form.querySelectorAll(".is-selected").forEach(function (el) { el.classList.remove("is-selected"); });
+        form.querySelectorAll(".is-invalid").forEach(function (el) { el.classList.remove("is-invalid"); });
+        form.querySelectorAll(".yl-qualifier__error.is-visible").forEach(function (el) { el.classList.remove("is-visible"); });
+        submitBtn.disabled = false;
+        updateUI();
+      }
+  
+      function setButtonVisible(btn, visible) {
+        if (!btn) return;
+        btn.hidden = !visible;
+        btn.classList.toggle("is-hidden", !visible);
+        btn.setAttribute("aria-hidden", visible ? "false" : "true");
+      }
+  
+      function updateUI() {
+        steps.forEach(function (stepEl) {
+          stepEl.classList.toggle("is-active", Number(stepEl.getAttribute("data-step")) === currentStep);
+        });
+  
+        stepLabelEl.textContent = "Step " + currentStep + " of " + TOTAL_STEPS;
+        stepNameEl.textContent = stepLabels[currentStep];
+        progressFill.style.width = (currentStep / TOTAL_STEPS * 100) + "%";
+        progressBar.setAttribute("aria-valuenow", String(currentStep));
+  
+        var isFirst = currentStep === 1;
+        var isLast = currentStep === TOTAL_STEPS;
+  
+        backBtn.disabled = isFirst;
+        backBtn.setAttribute("aria-disabled", isFirst ? "true" : "false");
+        backBtn.classList.toggle("is-enabled", !isFirst);
+  
+        setButtonVisible(nextBtn, !isLast);
+        setButtonVisible(submitBtn, isLast);
+  
+        nextBtn.classList.toggle("is-accent", currentStep > 1);
+      }
+  
+      backBtn.addEventListener("click", function () {
+        if (currentStep <= 1) return;
+        clearStepErrors(currentStep);
+        currentStep -= 1;
+        updateUI();
+      });
+  
+      nextBtn.addEventListener("click", function () {
+        if (!validateStep(currentStep)) return;
+        if (currentStep >= TOTAL_STEPS) return;
+        currentStep += 1;
+        updateUI();
+      });
+  
+      copyBtn.addEventListener("click", function () {
+        var text = referenceText.textContent.replace("Reference #", "");
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text);
+        }
+      });
+  
+      restartBtn.addEventListener("click", resetForm);
+  
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!validateStep(currentStep)) return;
+  
+        var ref = generateReference();
+        var formData = new FormData(form);
+        formData.append("reference_number", ref);
+        var ajaxUrl = wpConfig.ajaxUrl;
+  
+        if (!ajaxUrl) {
+          showSuccess(ref);
+          return;
+        }
+  
+        formData.append("action", "yl_qualifier_submit");
+        formData.append("nonce", wpConfig.nonce || "");
+        form.classList.add("is-submitting");
+        submitBtn.disabled = true;
+  
+        fetch(ajaxUrl, { method: "POST", body: formData, credentials: "same-origin" })
+          .then(function (response) {
+            return response.json().then(function (data) { return { ok: response.ok, data: data }; });
+          })
+          .then(function (result) {
+            if (result.ok && result.data.success) {
+              showSuccess(ref);
+              return;
+            }
+            submitBtn.disabled = false;
+            form.classList.remove("is-submitting");
+            var message = (result.data && result.data.data && result.data.data.message) || "Submission failed.";
+            var error = getStepError(4);
+            if (error) { error.textContent = message; error.classList.add("is-visible"); }
+          })
+          .catch(function () {
+            submitBtn.disabled = false;
+            form.classList.remove("is-submitting");
+            var error = getStepError(4);
+            if (error) {
+              error.textContent = "Network error. Please try again or call us directly.";
+              error.classList.add("is-visible");
+            }
+          });
+      });
+  
+      form.querySelectorAll("input, textarea").forEach(function (field) {
+        field.addEventListener("input", function () { field.classList.remove("is-invalid"); });
+        field.addEventListener("change", function () { field.classList.remove("is-invalid"); });
+      });
+  
+      updateUI();
+    })();
+  </script>
+</body>
+</html>
