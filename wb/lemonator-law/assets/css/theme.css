@@ -1,0 +1,675 @@
+/* Lemonator Law theme — matches lemonator.solution21-websites.com */
+
+:root {
+  --color-primary: #f5c518;
+  --color-secondary: #171a20;
+  --color-text: #8b90a0;
+  --color-accent-gold: #a98f5a;
+  --color-cream: #f6f2e8;
+  --color-white: #ffffff;
+  --color-process-bg: #eee8d8;
+  --color-dark-panel: rgba(27, 30, 36, 0.95);
+  --font: "Bricolage Grotesque", system-ui, sans-serif;
+  --container: 1200px;
+  --header-height: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-secondary);
+  background: var(--color-cream);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.lemonator-container {
+  width: min(100% - 40px, var(--container));
+  margin-inline: auto;
+}
+
+.lemonator-accent {
+  color: var(--color-primary);
+}
+
+.lemonator-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lemonator-btn:hover {
+  opacity: 0.92;
+}
+
+.lemonator-btn--primary {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.lemonator-btn--sm {
+  min-height: 40px;
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+.lemonator-btn--full {
+  width: 100%;
+}
+
+.lemonator-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.lemonator-eyebrow__line {
+  width: 48px;
+  height: 1px;
+  background: var(--color-white);
+  flex-shrink: 0;
+}
+
+.lemonator-eyebrow--dark .lemonator-eyebrow__line {
+  background: var(--color-secondary);
+}
+
+.lemonator-eyebrow--gold .lemonator-eyebrow__line,
+.lemonator-eyebrow--gold .lemonator-eyebrow__text {
+  color: var(--color-accent-gold);
+}
+
+.lemonator-eyebrow__text {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+}
+
+.lemonator-eyebrow--dark .lemonator-eyebrow__text {
+  color: var(--color-secondary);
+}
+
+.lemonator-section__intro {
+  margin-bottom: 48px;
+}
+
+.lemonator-section__intro--center {
+  text-align: center;
+}
+
+.lemonator-section__intro--center .lemonator-eyebrow {
+  justify-content: center;
+}
+
+.lemonator-section__title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-secondary);
+}
+
+/* Header */
+.lemonator-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.lemonator-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--header-height);
+  width: min(100% - 32px, var(--container));
+  margin-inline: auto;
+}
+
+.lemonator-header__logo img {
+  width: auto;
+  height: 14px;
+}
+
+.lemonator-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.lemonator-nav__list a {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-white);
+  transition: color 0.2s ease;
+}
+
+.lemonator-nav__list a:hover {
+  color: var(--color-primary);
+}
+
+.lemonator-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lemonator-header__phone {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.lemonator-nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lemonator-nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-white);
+}
+
+.lemonator-mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 16px 24px;
+  background: var(--color-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lemonator-mobile-nav .lemonator-nav__list {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.lemonator-mobile-nav.is-open {
+  display: flex;
+}
+
+/* Hero */
+.lemonator-hero {
+  position: relative;
+  padding: 80px 0;
+  color: var(--color-white);
+  background:
+    linear-gradient(90deg, rgba(23, 26, 32, 0.92) 0%, rgba(23, 26, 32, 0.55) 55%, rgba(23, 26, 32, 0.35) 100%),
+    var(--hero-bg) center / cover no-repeat;
+}
+
+.lemonator-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 48px;
+  align-items: start;
+}
+
+.lemonator-hero__title {
+  margin: 0 0 20px;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.lemonator-hero__lead {
+  max-width: 560px;
+  margin: 0 0 32px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.lemonator-hero__form {
+  justify-self: end;
+  width: 100%;
+  max-width: 480px;
+}
+
+.lemonator-hero__form .yl-qualifier {
+  margin: 0;
+}
+
+/* Vehicle classes */
+.lemonator-section {
+  padding: 80px 0;
+}
+
+.lemonator-vehicles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.lemonator-vehicle-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  color: var(--color-white);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.65) 100%),
+    var(--card-bg) center / cover no-repeat;
+  transition: transform 0.2s ease;
+}
+
+.lemonator-vehicle-card:hover {
+  transform: translateY(-2px);
+}
+
+.lemonator-vehicle-card__code {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.lemonator-vehicle-card__title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* Process */
+.lemonator-process {
+  background: var(--color-process-bg);
+}
+
+.lemonator-process__list {
+  display: grid;
+  gap: 32px;
+}
+
+.lemonator-process__item {
+  display: grid;
+  grid-template-columns: 255px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.lemonator-process__media img {
+  width: 255px;
+  max-width: 100%;
+  height: auto;
+}
+
+.lemonator-process__body h3 {
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.lemonator-process__body p {
+  max-width: 640px;
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+/* Attorney */
+.lemonator-attorney__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.lemonator-attorney__role {
+  margin: 8px 0 16px;
+  color: var(--color-accent-gold);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.lemonator-attorney__bio {
+  max-width: 560px;
+  margin-bottom: 28px;
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+.lemonator-attorney__media img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+/* Locations */
+.lemonator-locations__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.lemonator-locations__map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(23, 26, 32, 0.08), rgba(169, 143, 90, 0.15)),
+    var(--color-process-bg);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.lemonator-locations__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.lemonator-location-card {
+  padding: 20px;
+  border: 1px solid rgba(23, 26, 32, 0.08);
+  border-radius: 8px;
+  background: var(--color-white);
+}
+
+.lemonator-location-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.lemonator-location-card p {
+  color: var(--color-text);
+}
+
+/* Contact */
+.lemonator-contact {
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.lemonator-contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.lemonator-contact__form-panel {
+  padding: 40px;
+  border-radius: 8px;
+  background: var(--color-dark-panel);
+  backdrop-filter: blur(8px);
+}
+
+.lemonator-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lemonator-contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.lemonator-contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lemonator-contact-form__field span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lemonator-contact-form__field input,
+.lemonator-contact-form__field textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--color-white);
+  font: inherit;
+}
+
+.lemonator-contact-form__field input:focus,
+.lemonator-contact-form__field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary);
+}
+
+.lemonator-contact-form__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lemonator-contact-form__message {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.lemonator-contact-form__message--success {
+  color: #7dcea0;
+}
+
+.lemonator-contact-form__message--error {
+  color: #e05a5a;
+}
+
+.lemonator-contact__photo {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.lemonator-contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lemonator-contact__details li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lemonator-contact__details strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.lemonator-contact__details a {
+  color: var(--color-white);
+}
+
+/* Footer */
+.lemonator-footer {
+  padding: 64px 0;
+  background: var(--color-white);
+}
+
+.lemonator-footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  width: min(100% - 40px, var(--container));
+  margin-inline: auto;
+}
+
+.lemonator-footer__brand p {
+  max-width: 280px;
+  margin: 16px 0 20px;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.lemonator-footer__social {
+  display: flex;
+  gap: 12px;
+}
+
+.lemonator-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 4px;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  font-size: 12px;
+}
+
+.lemonator-footer__col h3 {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lemonator-footer__col li + li {
+  margin-top: 10px;
+}
+
+.lemonator-footer__col a,
+.lemonator-footer__contact li {
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.lemonator-footer__note {
+  margin-top: 12px;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .lemonator-hero__grid,
+  .lemonator-attorney__grid,
+  .lemonator-locations__grid,
+  .lemonator-contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lemonator-hero__form {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .lemonator-vehicles__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lemonator-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .lemonator-nav,
+  .lemonator-header__phone,
+  .lemonator-header__actions .lemonator-btn {
+    display: none;
+  }
+
+  .lemonator-nav-toggle {
+    display: flex;
+  }
+
+  .lemonator-section,
+  .lemonator-hero {
+    padding: 56px 0;
+  }
+
+  .lemonator-process__item {
+    grid-template-columns: 1fr;
+  }
+
+  .lemonator-locations__cards,
+  .lemonator-vehicles__grid,
+  .lemonator-contact-form__row,
+  .lemonator-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}

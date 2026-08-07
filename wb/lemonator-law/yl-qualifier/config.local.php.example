@@ -1,0 +1,31 @@
+<?php
+/**
+ * Local settings — no WordPress admin or wp-config.php required.
+ *
+ * 1. Copy this file to: config.local.php  (same folder)
+ * 2. Fill in your values
+ * 3. Upload via FTP / hosting file manager
+ *
+ * Do NOT commit config.local.php to public git repos.
+ */
+
+return array(
+	// Leave empty when using WP Mail SMTP + Google (Gmail / Google Workspace).
+	'mailtrap_token' => '',
+
+	// Must be a domain verified in Mailtrap (only if using Mailtrap API instead of Google).
+	'mailtrap_from_email' => 'hello@your-verified-domain.com',
+	'mailtrap_from_name'  => 'Lemon Law Qualifier',
+
+	// Who receives new lead notifications
+	'mail_to' => 'sulosp1992@gmail.com',
+
+	// true = use wp_mail() → WP Mail SMTP → Google SMTP/API (recommended if Google test email works)
+	'use_wp_mail' => true,
+
+	// Embed without shortcode — set your page slug (last part of the URL)
+	'embed_page_slug' => 'qualifier',
+	'embed_page_id'   => 0,
+	// replace | append | template
+	'embed_mode'      => 'replace',
+);
