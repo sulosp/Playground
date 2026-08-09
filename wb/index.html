@@ -1,0 +1,70 @@
+<html>
+<head>
+    <style>
+      :root {
+        --glow: #b98f2c;
+      }
+
+
+      .bg-black {
+        display: grid;
+        place-items: center;
+        background: #0c0b09;
+        overflow: hidden;
+        cursor: crosshair;
+      }
+
+      .glow {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: var(--glow);
+        opacity: 0.5;
+        box-shadow: 0 0 20px 12px var(--glow);
+        filter: blur(50px);
+        will-change: transform;
+        pointer-events: none;
+      }
+
+    </style>
+    
+  </head>
+  <body class="bg-black">
+    <div class="glow" aria-hidden="true"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script>
+      const glow = document.querySelector(".glow");
+
+      const xTo = gsap.quickTo(glow, "x", {
+        duration: 0.55,
+        ease: "power3.out",
+      });
+      const yTo = gsap.quickTo(glow, "y", {
+        duration: 0.55,
+        ease: "power3.out",
+      });
+
+      function onMove(e) {
+        const dx = e.clientX - window.innerWidth / 2;
+        const dy = e.clientY - window.innerHeight / 2;
+
+        xTo(dx * 0.2);
+        yTo(dy * 0.2);
+      }
+
+      function onLeave() {
+        gsap.to(glow, {
+          x: 0,
+          y: 0,
+          duration: 1,
+          ease: "elastic.out(1, 0.4)",
+          overwrite: true,
+        });
+      }
+
+      window.addEventListener("mousemove", onMove);
+      document.documentElement.addEventListener("mouseleave", onLeave);
+    </script>
+  </body>
+</html>
