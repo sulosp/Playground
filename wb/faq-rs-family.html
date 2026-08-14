@@ -1,0 +1,519 @@
+<style>
+  .rs-faq {
+    --rs-faq-primary: #9daccd;
+    --rs-faq-secondary: #485f87;
+    --rs-faq-text: #254594;
+    --rs-faq-accent: #01a1ea;
+    --rs-faq-white: #ffffff;
+    --rs-faq-row: #9daccd1a;
+    --rs-faq-row-open: #9daccd36;
+  }
+  .rs-faq button,
+  .rs-faq button:hover,
+  .rs-faq button:focus {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    box-shadow: none;
+    text-decoration: none;
+  }
+  .rs-faq a,
+  .rs-faq a:hover,
+  .rs-faq a:focus,
+  .rs-faq a:visited {
+    text-decoration: none;
+  }
+  .rs-faq *,
+  .rs-faq *::before,
+  .rs-faq *::after {
+    box-sizing: border-box;
+  }
+  .rs-faq__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 32px;
+    margin-bottom: 28px;
+  }
+  .rs-faq__intro {
+    min-width: 0;
+  }
+  .rs-faq__eyebrow {
+    margin: 0 0 16px;
+    font-family: var(--rs-faq-font);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rs-faq-secondary);
+  }
+  .rs-faq__title {
+    margin: 0;
+    font-family: var(--rs-faq-font);
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: var(--rs-faq-text);
+  }
+  .rs-faq__title-lead {
+    font-style: italic;
+    color: var(--rs-faq-primary);
+  }
+  .rs-faq__phone {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border-radius: 4px;
+    background: var(--rs-faq-text);
+    color: var(--rs-faq-white);
+    font-family: var(--rs-faq-font);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .rs-faq__phone:hover,
+  .rs-faq__phone:focus-visible {
+    background: var(--rs-faq-accent);
+    color: var(--rs-faq-white);
+  }
+  .rs-faq__phone:focus-visible {
+    outline: 2px solid var(--rs-faq-accent);
+    outline-offset: 3px;
+  }
+  .rs-faq__phone svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  .rs-faq__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 20px;
+  }
+  .rs-faq__filter {
+    min-height: 40px;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 4px;
+    background: var(--rs-faq-row);
+    color: var(--rs-faq-secondary);
+    font-family: var(--rs-faq-font);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .rs-faq button.rs-faq__filter:hover,
+  .rs-faq button.rs-faq__filter:focus {
+    background-color: var(--rs-faq-row);
+    color: var(--rs-faq-text);
+  }
+  .rs-faq button.rs-faq__filter[aria-pressed="true"],
+  .rs-faq button.rs-faq__filter[aria-pressed="true"]:hover,
+  .rs-faq button.rs-faq__filter[aria-pressed="true"]:focus {
+    background-color: var(--rs-faq-text);
+    color: var(--rs-faq-white);
+  }
+  .rs-faq__filter:focus-visible {
+    outline: 2px solid var(--rs-faq-accent);
+    outline-offset: 3px;
+  }
+  .rs-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-faq__item[hidden] {
+    display: none !important;
+  }
+  .rs-faq__q {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .rs-faq__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 20px;
+    border: 0;
+    border-radius: 4px;
+    background: var(--rs-faq-row);
+    color: var(--rs-faq-secondary);
+    font-family: var(--rs-faq-font);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .rs-faq button.rs-faq__toggle:hover,
+  .rs-faq button.rs-faq__toggle:focus {
+    background-color: var(--rs-faq-row);
+    color: var(--rs-faq-text);
+  }
+  .rs-faq button.rs-faq__toggle[aria-expanded="true"],
+  .rs-faq button.rs-faq__toggle[aria-expanded="true"]:hover,
+  .rs-faq button.rs-faq__toggle[aria-expanded="true"]:focus {
+    background-color: var(--rs-faq-row-open);
+    color: var(--rs-faq-text);
+  }
+  .rs-faq__toggle:focus-visible {
+    outline: 2px solid var(--rs-faq-accent);
+    outline-offset: 3px;
+  }
+  .rs-faq__question {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .rs-faq__icon {
+    display: grid;
+    flex: 0 0 28px;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    border: 1.5px solid var(--rs-faq-secondary);
+    border-radius: 50%;
+    background: transparent;
+    transition: transform 0.25s ease, background-color 0.15s ease;
+  }
+  .rs-faq__icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: var(--rs-faq-secondary);
+  }
+  .rs-faq__toggle[aria-expanded="true"] .rs-faq__icon {
+    background: var(--rs-faq-secondary);
+    transform: rotate(45deg);
+  }
+  .rs-faq__toggle[aria-expanded="true"] .rs-faq__icon svg {
+    fill: var(--rs-faq-white);
+  }
+  .rs-faq__a {
+    padding: 4px 20px 18px;
+  }
+  .rs-faq__a[hidden] {
+    display: none !important;
+  }
+  .rs-faq__a p {
+    margin: 16px 0 0;
+    font-family: var(--rs-faq-font);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--rs-faq-secondary);
+  }
+  .rs-faq__a a {
+    color: var(--rs-faq-text);
+    text-decoration: none;
+  }
+  .rs-faq__a a:hover {
+    color: var(--rs-faq-accent);
+  }
+  @media (max-width: 767px) {
+    .rs-faq__top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .rs-faq__question {
+      max-width: 90%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rs-faq__phone,
+    .rs-faq__filter,
+    .rs-faq__toggle,
+    .rs-faq__icon {
+      transition: none;
+    }
+  }
+</style>
+<section class="rs-faq" aria-labelledby="rs-faq-heading">
+  <div class="rs-faq__top">
+    <div class="rs-faq__intro">
+      <p class="rs-faq__eyebrow">Patient questions</p>
+      <h2 class="rs-faq__title" id="rs-faq-heading">
+        <span class="rs-faq__title-lead">Your Questions,</span>
+        <span class="rs-faq__title-end"> Answered.</span>
+      </h2>
+    </div>
+    <a class="rs-faq__phone" href="tel:+16095851410">
+      <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
+      </svg>
+      <span>609-585-1410</span>
+    </a>
+  </div>
+
+  <div class="rs-faq__filters" role="group" aria-label="Filter questions by topic">
+    <button class="rs-faq__filter" type="button" id="rs-faq-filter-all" aria-pressed="true" data-filter="all">All</button>
+    <button class="rs-faq__filter" type="button" id="rs-faq-filter-appointments" aria-pressed="false" data-filter="appointments">Appointments</button>
+    <button class="rs-faq__filter" type="button" id="rs-faq-filter-services" aria-pressed="false" data-filter="services">Services</button>
+    <button class="rs-faq__filter" type="button" id="rs-faq-filter-payment" aria-pressed="false" data-filter="payment">Payment &amp; Insurance</button>
+    <button class="rs-faq__filter" type="button" id="rs-faq-filter-location" aria-pressed="false" data-filter="location">Location &amp; Hours</button>
+  </div>
+
+  <ul class="rs-faq__list" id="rs-faq-list">
+    <li class="rs-faq__item" data-category="appointments">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-new-patients" aria-expanded="true" aria-controls="rs-faq-a-new-patients">
+          <span class="rs-faq__question">Are you accepting new patients?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-new-patients" role="region" aria-labelledby="rs-faq-q-new-patients">
+        <p>Yes. We welcome new patients and their families. Call <a href="tel:+16095851410">(609) 585-1410</a> to book your first visit — we will handle the paperwork and walk you through what to expect so the appointment feels straightforward from the start.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="payment">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-insurance" aria-expanded="false" aria-controls="rs-faq-a-insurance">
+          <span class="rs-faq__question">Do you take my insurance?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-insurance" role="region" aria-labelledby="rs-faq-q-insurance" hidden>        
+        <p>We are a participating, in-network provider with Delta Dental. We're out-of-network with all other insurance carriers, but we're happy to submit claims on your behalf. Many PPO plans offer partial out-of-network reimbursement. Call us at <a href="tel:+16095851410">(609) 585-1410</a> and we'll help you understand your specific benefits before your visit.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="location">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-hours" aria-expanded="false" aria-controls="rs-faq-a-hours">
+          <span class="rs-faq__question">What are your office hours?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-hours" role="region" aria-labelledby="rs-faq-q-hours" hidden>
+        <p>We are open Monday through Thursday, 8:00 AM to 6:00 PM, and closed Friday through Sunday. Call <a href="tel:+16095851410">(609) 585-1410</a> during those hours to schedule an appointment or ask a question.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="location">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-location" aria-expanded="false" aria-controls="rs-faq-a-location">
+          <span class="rs-faq__question">Where is your office located?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-location" role="region" aria-labelledby="rs-faq-q-location" hidden>
+        <p>We are at 2277 Route 33, Suite 412, Hamilton, NJ 08690, inside the Golden Crest Corporate Center. Free on-site parking is available, and the office is a short drive from Robbinsville, Mercerville, Yardville, Trenton, and East Windsor. <a href="https://rsfamilydentalinc.solution21-websites.com/directions">Get directions</a>.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="appointments">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-anxiety" aria-expanded="false" aria-controls="rs-faq-a-anxiety">
+          <span class="rs-faq__question">Do you offer services for anxious or fearful patients?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-anxiety" role="region" aria-labelledby="rs-faq-q-anxiety" hidden>
+        <p>Yes. The practice is built around reducing fear and stress at the dentist. We offer sedation dentistry for patients who feel anxious, and the team explains each step so you know what is happening before it happens.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="services">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-services" aria-expanded="false" aria-controls="rs-faq-a-services">
+          <span class="rs-faq__question">What dental services do you provide?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-services" role="region" aria-labelledby="rs-faq-q-services" hidden>
+        <p>We provide general and cosmetic dentistry in one office, including exams and cleanings, composite restorations, crowns, root canal therapy, extractions, Invisalign and ClearCorrect, gum therapy, dentures, fixed bridges, implant restorations, veneers, and teeth whitening.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="appointments">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-cleaning" aria-expanded="false" aria-controls="rs-faq-a-cleaning">
+          <span class="rs-faq__question">How often should I come in for a cleaning and checkup?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-cleaning" role="region" aria-labelledby="rs-faq-q-cleaning" hidden>
+        <p>Most patients do well with a cleaning and exam every six months. If you have gum disease or another ongoing condition, we may recommend a shorter interval — your dentist will set the schedule that fits your needs.</p>
+      </div>
+    </li>
+
+    <li class="rs-faq__item" data-category="services">
+      <h3 class="rs-faq__q">
+        <button class="rs-faq__toggle" type="button" id="rs-faq-q-technology" aria-expanded="false" aria-controls="rs-faq-a-technology">
+          <span class="rs-faq__question">What technology do you use?</span>
+          <span class="rs-faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+          </span>
+        </button>
+      </h3>
+      <div class="rs-faq__a" id="rs-faq-a-technology" role="region" aria-labelledby="rs-faq-q-technology" hidden>
+        <p>We use digital X-rays (up to 90% less radiation than film), intraoral cameras so you can see what we see, and digital impression scanners that replace messy putty trays.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are you accepting new patients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We welcome new patients and their families. Call (609) 585-1410 to book your first visit — we will handle the paperwork and walk you through what to expect so the appointment feels straightforward from the start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you take my insurance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work with most major PPO and indemnity plans and will verify your benefits before your visit. If you do not see your carrier, call (609) 585-1410 and we will check your coverage. Patients without insurance can use flexible payment options; we accept most major credit cards, cash, and personal checks, with payment expected at the time of service."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are your office hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are open Monday through Thursday, 8:00 AM to 6:00 PM, and closed Friday through Sunday. Call (609) 585-1410 during those hours to schedule an appointment or ask a question."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is your office located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are at 2277 Route 33, Suite 412, Hamilton, NJ 08690, inside the Golden Crest Corporate Center. Free on-site parking is available, and the office is a short drive from Robbinsville, Mercerville, Yardville, Trenton, and East Windsor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer services for anxious or fearful patients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The practice is built around reducing fear and stress at the dentist. We offer sedation dentistry for patients who feel anxious, and the team explains each step so you know what is happening before it happens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What dental services do you provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide general and cosmetic dentistry in one office, including exams and cleanings, composite restorations, crowns, root canal therapy, extractions, Invisalign and ClearCorrect, gum therapy, dentures, fixed bridges, implant restorations, veneers, and teeth whitening."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I come in for a cleaning and checkup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most patients do well with a cleaning and exam every six months. If you have gum disease or another ongoing condition, we may recommend a shorter interval — your dentist will set the schedule that fits your needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technology do you use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use digital X-rays (up to 90% less radiation than film), intraoral cameras so you can see what we see, and digital impression scanners that replace messy putty trays."
+      }
+    }
+  ]
+}
+</script>
+<script>
+  (function () {
+    const root = document.querySelector(".rs-faq");
+    if (!root) return;
+
+    const filters = Array.from(root.querySelectorAll(".rs-faq__filter"));
+    const items = Array.from(root.querySelectorAll(".rs-faq__item"));
+
+    function visibleItems() {
+      return items.filter((item) => !item.hasAttribute("hidden"));
+    }
+
+    function setExpanded(item, open) {
+      const toggle = item.querySelector(".rs-faq__toggle");
+      const panel = item.querySelector(".rs-faq__a");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      panel.hidden = !open;
+    }
+
+    function closeAll(except) {
+      items.forEach((item) => {
+        if (item !== except) setExpanded(item, false);
+      });
+    }
+
+    function applyFilter(category) {
+      items.forEach((item) => {
+        const match = category === "all" || item.dataset.category === category;
+        item.toggleAttribute("hidden", !match);
+      });
+
+      const shown = visibleItems();
+      const openVisible = shown.find(
+        (item) => item.querySelector(".rs-faq__toggle").getAttribute("aria-expanded") === "true"
+      );
+      if (!openVisible && shown[0]) {
+        closeAll();
+        setExpanded(shown[0], true);
+      }
+    }
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.dataset.filter;
+        filters.forEach((other) => {
+          other.setAttribute("aria-pressed", other === button ? "true" : "false");
+        });
+        applyFilter(category);
+      });
+    });
+
+    items.forEach((item) => {
+      const toggle = item.querySelector(".rs-faq__toggle");
+      toggle.addEventListener("click", () => {
+        const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+        closeAll(item);
+        setExpanded(item, willOpen);
+      });
+    });
+  })();
+</script>

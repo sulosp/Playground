@@ -1,0 +1,1542 @@
+<style>
+  .rs-ins {
+    --rs-ins-primary: #9daccd;
+    --rs-ins-secondary: #485f87;
+    --rs-ins-text: #254594;
+    --rs-ins-accent: #01a1ea;
+    --rs-ins-white: #ffffff;
+    --rs-ins-row: #9daccd1a;
+    --rs-ins-row-open: #9daccd36;
+    --rs-ins-line: #bfc8db;
+    --rs-ins-font: "Abhaya Libre", "Playfair Display", Georgia, serif;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0;
+    color: var(--rs-ins-secondary);
+    font-family: var(--rs-ins-font);
+  }
+  .rs-ins button,
+  .rs-ins button:hover,
+  .rs-ins button:focus {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    box-shadow: none;
+    text-decoration: none;
+  }
+  .rs-ins a:hover,
+  .rs-ins a:focus,
+  .rs-ins a:visited {
+    text-decoration: none;
+  }
+  .rs-ins *,
+  .rs-ins *::before,
+  .rs-ins *::after {
+    box-sizing: border-box;
+  }
+  .rs-ins h1,
+  .rs-ins h2,
+  .rs-ins h3,
+  .rs-ins p,
+  .rs-ins li,
+  .rs-ins a,
+  .rs-ins button {
+    font-family: var(--rs-ins-font);
+  }
+  .rs-ins__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 32px;
+    margin-bottom: 28px;
+  }
+  .rs-ins__intro {
+    min-width: 0;
+  }
+  .rs-ins__eyebrow {
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__title {
+    margin: 0;
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__title-lead {
+    font-style: italic;
+    color: var(--rs-ins-primary);
+  }
+  .rs-ins__lede {
+    margin: 16px 0 0;
+    max-width: 640px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__phone {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border-radius: 4px;
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .rs-ins__phone:hover,
+  .rs-ins__phone:focus-visible {
+    background: var(--rs-ins-accent);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__phone:focus-visible,
+  .rs-ins__jump a:focus-visible,
+  .rs-ins__cta:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 3px;
+  }
+  .rs-ins__phone svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  .rs-ins__jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 40px;
+  }
+  .rs-ins__jump a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+    color: var(--rs-ins-secondary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .rs-ins__jump a:hover,
+  .rs-ins__jump a:focus-visible,
+  .rs-ins__jump a.is-active {
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__check {
+    margin: 28px 0 0;
+    padding: 28px 32px 32px;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+    scroll-margin-top: 24px;
+  }
+  .rs-ins__check .rs-ins__section-head {
+    margin-bottom: 20px;
+  }
+  .rs-ins__fieldset {
+    margin: 0 0 20px;
+    padding: 0;
+    border: 0;
+  }
+  .rs-ins__fieldset legend {
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rs-ins__choice {
+    position: relative;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+  }
+  .rs-ins__choice input {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .rs-ins__choice span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-secondary);
+    font-size: 17px;
+    line-height: 1.2;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .rs-ins__choice input:hover + span {
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__choice input:checked + span {
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__choice input:focus-visible + span {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 3px;
+  }
+  .rs-ins__result {
+    min-height: 168px;
+    padding: 24px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-secondary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  .rs-ins__result.is-in {
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__result.is-in .rs-ins__result-kicker,
+  .rs-ins__result.is-in h3,
+  .rs-ins__result.is-in p {
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__result-kicker {
+    margin: 0 0 8px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rs-ins-accent);
+  }
+  .rs-ins__result h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__result p {
+    margin: 0 0 16px;
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 26px;
+  }
+  .rs-ins__result p:last-child {
+    margin-bottom: 0;
+  }
+  .rs-ins__result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rs-ins__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 4px;
+    background: var(--rs-ins-accent);
+    color: var(--rs-ins-white);
+    font-size: 16px;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .rs-ins button.rs-ins__cta,
+  .rs-ins button.rs-ins__cta:hover,
+  .rs-ins button.rs-ins__cta:focus {
+    background: var(--rs-ins-accent);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__cta:hover,
+  .rs-ins__cta:focus-visible {
+    background: #0290d2;
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__cta--ghost {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px currentColor;
+  }
+  .rs-ins button.rs-ins__cta--ghost,
+  .rs-ins button.rs-ins__cta--ghost:hover,
+  .rs-ins button.rs-ins__cta--ghost:focus,
+  .rs-ins a.rs-ins__cta--ghost {
+    background: transparent;
+    color: inherit;
+  }
+  .rs-ins__pick {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 6px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-text);
+    font-size: 16px;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .rs-ins button.rs-ins__pick,
+  .rs-ins button.rs-ins__pick:hover,
+  .rs-ins button.rs-ins__pick:focus {
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__card--in .rs-ins__pick {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins button.rs-ins__card--in .rs-ins__pick,
+  .rs-ins .rs-ins__card--in button.rs-ins__pick,
+  .rs-ins .rs-ins__card--in button.rs-ins__pick:hover,
+  .rs-ins .rs-ins__card--in button.rs-ins__pick:focus {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins .rs-ins__card--in button.rs-ins__pick:hover,
+  .rs-ins .rs-ins__card--in button.rs-ins__pick:focus-visible {
+    background: var(--rs-ins-accent);
+  }
+  .rs-ins button.rs-ins__pick:hover,
+  .rs-ins button.rs-ins__pick:focus-visible {
+    background: var(--rs-ins-accent);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__pick:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 3px;
+  }
+  .rs-ins__card.is-active.rs-ins__card--in {
+    box-shadow: 0 0 0 3px var(--rs-ins-accent);
+  }
+  .rs-ins__card.is-active:not(.rs-ins__card--in) {
+    box-shadow: inset 0 0 0 1.5px var(--rs-ins-text);
+  }
+  .rs-ins__card.is-dim {
+    opacity: 0.62;
+  }
+  .rs-ins__point {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .rs-ins__point:hover,
+  .rs-ins__point.is-active {
+    background: var(--rs-ins-row-open);
+  }
+  .rs-ins__point:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: -4px;
+  }
+  .rs-ins__tier {
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+  .rs-ins__tier:hover,
+  .rs-ins__tier.is-active {
+    background: var(--rs-ins-row-open);
+    box-shadow: inset 0 0 0 1.5px var(--rs-ins-text);
+  }
+  .rs-ins__tier.is-dim {
+    opacity: 0.55;
+  }
+  .rs-ins__tier:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 3px;
+  }
+  .rs-ins__chips {
+    gap: 6px;
+  }
+  .rs-ins__chip {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-secondary);
+    font-size: 14px;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+  .rs-ins button.rs-ins__chip,
+  .rs-ins button.rs-ins__chip:hover,
+  .rs-ins button.rs-ins__chip:focus {
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins button.rs-ins__chip:hover,
+  .rs-ins button.rs-ins__chip:focus-visible,
+  .rs-ins__tier.is-active .rs-ins__chip {
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__chip:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 2px;
+  }
+  .rs-ins__steps li {
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  .rs-ins__steps li:hover,
+  .rs-ins__steps li.is-active {
+    background: var(--rs-ins-row-open);
+  }
+  .rs-ins__steps li.is-active span {
+    background: var(--rs-ins-accent);
+  }
+  .rs-ins__steps li:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 2px;
+  }
+  .rs-ins__pay-item {
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .rs-ins__pay-item:hover,
+  .rs-ins__pay-item.is-active {
+    background: var(--rs-ins-row-open);
+    box-shadow: inset 0 0 0 1.5px var(--rs-ins-text);
+  }
+  .rs-ins__pay-item:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 3px;
+  }
+  .rs-ins__pay-extra {
+    display: none;
+    margin: 4px 0 0;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__pay-item.is-active .rs-ins__pay-extra {
+    display: block;
+  }
+  .rs-ins__section {
+    margin: 0 0 56px;
+    scroll-margin-top: 24px;
+  }
+  .rs-ins__section-head {
+    max-width: 720px;
+    margin: 0 0 24px;
+  }
+  .rs-ins__kicker {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--rs-ins-accent);
+  }
+  .rs-ins__section-title {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__section-copy {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__network {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .rs-ins__card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 100%;
+    padding: 28px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+    box-shadow: inset 0 0 0 1.5px var(--rs-ins-line);
+  }
+  .rs-ins__card--in {
+    background: var(--rs-ins-text);
+    box-shadow: none;
+  }
+  .rs-ins__logo-slot {
+    display: flex;
+    align-items: center;
+    min-height: 28px;
+  }
+  .rs-ins__badge {
+    display: inline-flex;
+    align-self: flex-start;
+    margin: 0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: var(--rs-ins-accent);
+    color: var(--rs-ins-white);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1.6px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .rs-ins__badge--out {
+    background: var(--rs-ins-secondary);
+  }
+  .rs-ins__card h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__card--in h2,
+  .rs-ins__card--in p {
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__card p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--rs-ins-row);
+  }
+  .rs-ins__point {
+    position: relative;
+    padding: 28px 24px;
+  }
+  .rs-ins__point + .rs-ins__point {
+    box-shadow: inset 1.5px 0 0 var(--rs-ins-line);
+  }
+  .rs-ins__point-num {
+    display: block;
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rs-ins-accent);
+  }
+  .rs-ins__point h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__point p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-ins__tier {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 24px;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+  }
+  .rs-ins__tier-rate {
+    margin: 0;
+    font-size: clamp(34px, 4vw, 42px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__meter {
+    display: block;
+    width: 100%;
+    height: 6px;
+    margin: 4px 0 6px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #9daccd55;
+  }
+  .rs-ins__meter > span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--rs-ins-accent);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .rs-ins__meter.is-in > span {
+    width: var(--rs-ins-fill, 50%);
+  }
+  .rs-ins__tier h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__tier p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-ins__chips li {
+    margin: 0;
+    padding: 0;
+  }
+  .rs-ins__note {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__verify {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .rs-ins__steps {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-ins__steps li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 14px;
+    align-items: start;
+    margin: 0;
+    padding: 14px 0;
+    font-size: 17px;
+    line-height: 26px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__steps li + li {
+    border-top: 1px solid #9daccd33;
+  }
+  .rs-ins__steps span {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+    font-size: 14px;
+    line-height: 1;
+  }
+  .rs-ins__embed-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+  }
+  .rs-ins__embed {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 420px;
+    padding: 28px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__embed-label {
+    margin: 0 0 8px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rs-ins-accent);
+  }
+  .rs-ins__embed h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__embed p {
+    margin: 0;
+    max-width: 380px;
+    font-size: 17px;
+    line-height: 26px;
+  }
+  .rs-ins__embed a {
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__embed a:hover {
+    color: var(--rs-ins-accent);
+  }
+  .rs-ins__pay {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-ins__pay-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+  }
+  .rs-ins__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--rs-ins-white);
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__icon svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .rs-ins__pay-item h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--rs-ins-text);
+  }
+  .rs-ins__pay-item p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins__pay-item a {
+    color: var(--rs-ins-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .rs-ins__pay-item a:hover,
+  .rs-ins__pay-item a:focus-visible {
+    color: var(--rs-ins-accent);
+  }
+  .rs-ins__policy {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    align-items: center;
+    padding: 28px 32px;
+    border-radius: 4px;
+    background: var(--rs-ins-text);
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__policy h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__policy p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__policy-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-ins__policy-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 17px;
+    line-height: 1.3;
+    color: var(--rs-ins-white);
+  }
+  .rs-ins__policy-list li + li {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .rs-ins__policy-list svg {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    fill: var(--rs-ins-accent);
+  }
+  .rs-ins__membership {
+    padding: 32px;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+  }
+  .rs-ins__membership .rs-ins__section-head {
+    margin-bottom: 20px;
+  }
+  .rs-ins__plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 0;
+    min-height: 220px;
+  }
+  .rs-ins__plan {
+    min-height: 220px;
+    border-radius: 4px;
+    background: var(--rs-ins-white);
+  }
+  .rs-ins-faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .rs-ins-faq__q {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .rs-ins-faq__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 20px;
+    border: 0;
+    border-radius: 4px;
+    background: var(--rs-ins-row);
+    color: var(--rs-ins-secondary);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .rs-ins button.rs-ins-faq__toggle:hover,
+  .rs-ins button.rs-ins-faq__toggle:focus {
+    background-color: var(--rs-ins-row);
+    color: var(--rs-ins-text);
+  }
+  .rs-ins button.rs-ins-faq__toggle[aria-expanded="true"],
+  .rs-ins button.rs-ins-faq__toggle[aria-expanded="true"]:hover,
+  .rs-ins button.rs-ins-faq__toggle[aria-expanded="true"]:focus {
+    background-color: var(--rs-ins-row-open);
+    color: var(--rs-ins-text);
+  }
+  .rs-ins-faq__toggle:focus-visible {
+    outline: 2px solid var(--rs-ins-accent);
+    outline-offset: 3px;
+  }
+  .rs-ins-faq__question {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .rs-ins-faq__icon {
+    display: grid;
+    flex: 0 0 28px;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    border: 1.5px solid var(--rs-ins-secondary);
+    border-radius: 50%;
+    background: transparent;
+    transition: transform 0.25s ease, background-color 0.15s ease;
+  }
+  .rs-ins-faq__icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: var(--rs-ins-secondary);
+  }
+  .rs-ins-faq__toggle[aria-expanded="true"] .rs-ins-faq__icon {
+    background: var(--rs-ins-secondary);
+    transform: rotate(45deg);
+  }
+  .rs-ins-faq__toggle[aria-expanded="true"] .rs-ins-faq__icon svg {
+    fill: var(--rs-ins-white);
+  }
+  .rs-ins-faq__a {
+    padding: 4px 20px 18px;
+  }
+  .rs-ins-faq__a[hidden] {
+    display: none !important;
+  }
+  .rs-ins-faq__a p {
+    margin: 16px 0 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--rs-ins-secondary);
+  }
+  .rs-ins-faq__a a {
+    color: var(--rs-ins-text);
+    text-decoration: none;
+  }
+  .rs-ins-faq__a a:hover {
+    color: var(--rs-ins-accent);
+  }
+  @media (max-width: 1024px) {
+    .rs-ins__pay {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 900px) {
+    .rs-ins__check {
+      padding: 24px;
+    }
+    .rs-ins__network,
+    .rs-ins__tiers,
+    .rs-ins__verify,
+    .rs-ins__policy,
+    .rs-ins__plans {
+      grid-template-columns: 1fr;
+    }
+    .rs-ins__points {
+      grid-template-columns: 1fr;
+    }
+    .rs-ins__point + .rs-ins__point {
+      box-shadow: inset 0 1.5px 0 var(--rs-ins-line);
+    }
+  }
+  @media (max-width: 767px) {
+    .rs-ins__top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .rs-ins__pay {
+      grid-template-columns: 1fr;
+    }
+    .rs-ins-faq__question {
+      max-width: 90%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rs-ins__phone,
+    .rs-ins__jump a,
+    .rs-ins__choice span,
+    .rs-ins__result,
+    .rs-ins__cta,
+    .rs-ins__pick,
+    .rs-ins__point,
+    .rs-ins__tier,
+    .rs-ins__meter > span,
+    .rs-ins__pay-item,
+    .rs-ins-faq__toggle,
+    .rs-ins-faq__icon {
+      transition: none;
+    }
+    .rs-ins__meter > span,
+    .rs-ins__meter.is-in > span {
+      width: var(--rs-ins-fill, 50%);
+    }
+  }
+</style>
+
+<section class="rs-ins" aria-labelledby="rs-ins-heading">
+  <div class="rs-ins__top">
+    <div class="rs-ins__intro">
+      <p class="rs-ins__eyebrow">Insurance &amp; payment</p>
+      <h1 class="rs-ins__title" id="rs-ins-heading">
+        <span class="rs-ins__title-lead">Coverage made clear,</span>
+        <span class="rs-ins__title-end"> before you sit down.</span>
+      </h1>
+      <p class="rs-ins__lede">We participate with Delta Dental and welcome patients with any other plan. Here is exactly how coverage, claims, and payment work at our office.</p>
+    </div>
+    <a class="rs-ins__phone" href="tel:+16095851410">
+      <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
+      </svg>
+      <span>609-585-1410</span>
+    </a>
+  </div>
+
+  <nav class="rs-ins__jump" aria-label="On this page">
+    <a href="#rs-ins-delta">Delta Dental</a>
+    <a href="#rs-ins-oon">Other carriers</a>
+    <a href="#rs-ins-oon-meaning">Out-of-network</a>
+    <a href="#rs-ins-ppo">PPO coverage</a>
+    <a href="#rs-ins-verify">Verify benefits</a>
+    <a href="#rs-ins-pay">Payment</a>
+    <a href="#rs-ins-faq-heading">FAQ</a>
+  </nav>
+
+  <div class="rs-ins__network">
+    <article class="rs-ins__card rs-ins__card--in" id="rs-ins-delta">
+      <div class="rs-ins__logo-slot">
+        <!-- Delta Dental logo sits here only after brand-guideline confirmation. Do not add other carrier marks. -->
+        <p class="rs-ins__badge">In-network</p>
+      </div>
+      <h2>Delta Dental Participation</h2>
+      <p>We are a participating provider with Delta Dental. If you have Delta Dental coverage, you're seeing an in-network dentist, and your plan's negotiated rates apply directly to your visit.</p>
+      <button class="rs-ins__pick" type="button" data-plan="delta">This is my plan</button>
+    </article>
+    <article class="rs-ins__card" id="rs-ins-oon">
+      <p class="rs-ins__badge rs-ins__badge--out">Out-of-network</p>
+      <h2>Out-of-Network Status with All Other Carriers</h2>
+      <p>For all other insurance carriers, we are out-of-network. This means we don't have a direct contract with them.</p>
+      <button class="rs-ins__pick" type="button" data-plan="other">I have another plan</button>
+    </article>
+  </div>
+
+  <section class="rs-ins__section" aria-labelledby="rs-ins-oon-meaning">
+    <div class="rs-ins__section-head">
+      <p class="rs-ins__kicker">Still welcome here</p>
+      <h2 class="rs-ins__section-title" id="rs-ins-oon-meaning">What Out-of-Network Actually Means for You</h2>
+      <p class="rs-ins__section-copy">Being out-of-network doesn't mean we can't see you. We still welcome and treat patients with any insurance plan. We file claims to your insurance carrier on your behalf, so you don't have to, and where your plan permits it, we accept assignment of benefits, meaning your insurer can pay us directly rather than reimbursing you after the fact.</p>
+    </div>
+    <ul class="rs-ins__points">
+      <li class="rs-ins__point is-active" tabindex="0" role="button" data-point="1">
+        <span class="rs-ins__point-num">01</span>
+        <h3>We still welcome you</h3>
+        <p>Being out-of-network doesn't mean we can't see you. We still welcome and treat patients with any insurance plan.</p>
+      </li>
+      <li class="rs-ins__point" tabindex="0" role="button" data-point="2">
+        <span class="rs-ins__point-num">02</span>
+        <h3>We file claims for you</h3>
+        <p>We file claims to your insurance carrier on your behalf, so you don't have to.</p>
+      </li>
+      <li class="rs-ins__point" tabindex="0" role="button" data-point="3">
+        <span class="rs-ins__point-num">03</span>
+        <h3>Assignment of benefits</h3>
+        <p>Where your plan permits it, we accept assignment of benefits, meaning your insurer can pay us directly rather than reimbursing you after the fact.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="rs-ins__section" aria-labelledby="rs-ins-ppo">
+    <div class="rs-ins__section-head">
+      <p class="rs-ins__kicker">Typical PPO tiers</p>
+      <h2 class="rs-ins__section-title" id="rs-ins-ppo">How PPO Coverage Typically Works</h2>
+      <p class="rs-ins__section-copy">Most PPO plans organize coverage into tiers, and this applies whether we're in-network or out-of-network with your specific carrier:</p>
+    </div>
+    <ul class="rs-ins__tiers">
+      <li class="rs-ins__tier" data-service="preventive">
+        <p class="rs-ins__tier-rate">80–100%</p>
+        <span class="rs-ins__meter" data-fill="90%" aria-hidden="true"><span></span></span>
+        <h3>Preventive care</h3>
+        <p>Preventive care (cleanings, exams, X-rays) is usually covered at 80 to 100%.</p>
+        <ul class="rs-ins__chips">
+          <li><button class="rs-ins__chip" type="button" data-service="preventive">Cleanings</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="preventive">Exams</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="preventive">X-rays</button></li>
+        </ul>
+      </li>
+      <li class="rs-ins__tier" data-service="basic">
+        <p class="rs-ins__tier-rate">70–80%</p>
+        <span class="rs-ins__meter" data-fill="75%" aria-hidden="true"><span></span></span>
+        <h3>Basic services</h3>
+        <p>Basic services (fillings, extractions, root canals) are typically covered around 70 to 80%.</p>
+        <ul class="rs-ins__chips">
+          <li><button class="rs-ins__chip" type="button" data-service="basic">Fillings</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="basic">Extractions</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="basic">Root canals</button></li>
+        </ul>
+      </li>
+      <li class="rs-ins__tier" data-service="major">
+        <p class="rs-ins__tier-rate">~50%</p>
+        <span class="rs-ins__meter" data-fill="50%" aria-hidden="true"><span></span></span>
+        <h3>Major services</h3>
+        <p>Major services (crowns, bridges, dentures, implants) are usually covered around 50%.</p>
+        <ul class="rs-ins__chips">
+          <li><button class="rs-ins__chip" type="button" data-service="major">Crowns</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="major">Bridges</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="major">Dentures</button></li>
+          <li><button class="rs-ins__chip" type="button" data-service="major">Implants</button></li>
+        </ul>
+      </li>
+    </ul>
+    <p class="rs-ins__note">Out-of-network benefits often follow the same tiers, though reimbursement may be based on a different fee schedule.</p>
+
+    <div class="rs-ins__check" id="rs-ins-check" aria-labelledby="rs-ins-check-title">
+      <div class="rs-ins__section-head">
+        <p class="rs-ins__kicker">Apply the tiers above</p>
+        <h2 class="rs-ins__section-title" id="rs-ins-check-title">See how a visit typically works</h2>
+        <p class="rs-ins__section-copy">Choose your coverage and a service. The snapshot uses the Delta Dental, out-of-network, and PPO details from the sections above. This is typical coverage, not a quote.</p>
+      </div>
+      <fieldset class="rs-ins__fieldset">
+        <legend>What insurance do you have?</legend>
+        <div class="rs-ins__choices">
+          <label class="rs-ins__choice">
+            <input type="radio" name="rs-ins-plan" value="delta">
+            <span>Delta Dental</span>
+          </label>
+          <label class="rs-ins__choice">
+            <input type="radio" name="rs-ins-plan" value="other">
+            <span>Another plan</span>
+          </label>
+          <label class="rs-ins__choice">
+            <input type="radio" name="rs-ins-plan" value="none">
+            <span>No insurance</span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset class="rs-ins__fieldset">
+        <legend>What are you coming in for?</legend>
+        <div class="rs-ins__choices">
+          <label class="rs-ins__choice">
+            <input type="radio" name="rs-ins-service" value="preventive">
+            <span>Cleaning, exam, or X-rays</span>
+          </label>
+          <label class="rs-ins__choice">
+            <input type="radio" name="rs-ins-service" value="basic">
+            <span>Filling, extraction, or root canal</span>
+          </label>
+          <label class="rs-ins__choice">
+            <input type="radio" name="rs-ins-service" value="major">
+            <span>Crown, bridge, denture, or implant</span>
+          </label>
+        </div>
+      </fieldset>
+      <div class="rs-ins__result" id="rs-ins-check-result" aria-live="polite">
+        <p class="rs-ins__result-kicker">Your snapshot</p>
+        <h3>Select both options above</h3>
+        <p>We'll match your choices to the in-network, out-of-network, and PPO coverage details on this page.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rs-ins__section" aria-labelledby="rs-ins-verify">
+    <div class="rs-ins__verify">
+      <div class="rs-ins__section-head">
+        <p class="rs-ins__kicker">No guesswork</p>
+        <h2 class="rs-ins__section-title" id="rs-ins-verify">Free Benefits Verification</h2>
+        <p class="rs-ins__section-copy">Not sure what your plan covers? Fill out the short form below with your insurance carrier, plan, and member details, and our team will follow up with a written estimate before you commit to any treatment.</p>
+      </div>
+      <div class="rs-ins__embed-wrap">
+        <!--
+          HIPAA-compliant form embed — replace the inner node below with the
+          vendor snippet from item #21. Do not collect member IDs or plan
+          details in a non-HIPAA HTML form.
+        -->
+        <div class="rs-ins__embed" id="rs-ins-benefits-form" data-embed-slot="hipaa-benefits-verification">
+          <p class="rs-ins__embed-label">Secure form</p>
+          <h3>Request a written estimate</h3>
+          <p>The HIPAA-compliant benefits form will appear in this panel. Until it is embedded, call <a href="tel:+16095851410">(609) 585-1410</a> and we will verify your coverage by phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rs-ins__section" aria-labelledby="rs-ins-pay">
+    <div class="rs-ins__section-head">
+      <p class="rs-ins__kicker">How you can pay</p>
+      <h2 class="rs-ins__section-title" id="rs-ins-pay">Payment and Financing Options</h2>
+      <p class="rs-ins__section-copy">We accept the following payment methods:</p>
+    </div>
+    <ul class="rs-ins__pay">
+      <li class="rs-ins__pay-item" data-pay="cards">
+        <span class="rs-ins__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11zm2 .5v1.75h16V7H4zm0 4.25V17.5c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5v-6.25H4z"></path></svg>
+        </span>
+        <h3>Major credit cards</h3>
+        <p>Visa, MasterCard, American Express, and Discover.</p>
+      </li>
+      <li class="rs-ins__pay-item" data-pay="cash">
+        <span class="rs-ins__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75zm2.75-.25a.25.25 0 0 0-.25.25v10.5c0 .14.11.25.25.25h12.5a.25.25 0 0 0 .25-.25V6.75a.25.25 0 0 0-.25-.25H5.75zM7 9.5h6v2H7v-2zm0 4h4v2H7v-2z"></path></svg>
+        </span>
+        <h3>Cash and personal checks</h3>
+        <p>Cash and personal checks.</p>
+      </li>
+      <li class="rs-ins__pay-item" data-pay="carecredit">
+        <span class="rs-ins__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3.75A.75.75 0 0 1 7.75 3h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 7 3.75zM4.75 7A.75.75 0 0 1 5.5 6.25h13a.75.75 0 0 1 0 1.5h-13A.75.75 0 0 1 4.75 7zM3 11.25A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 18.75v-7.5zM12 13.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5z"></path></svg>
+        </span>
+        <h3>CareCredit</h3>
+        <p>A healthcare financing card that lets you pay for treatment over time, including interest-free promotional periods for qualifying purchases. You can <a href="https://www.carecredit.com/apply/" rel="noopener noreferrer">apply online</a> in minutes, often with a decision in seconds.</p>
+      </li>
+      <li class="rs-ins__pay-item" data-pay="hsa">
+        <span class="rs-ins__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7.5A3.5 3.5 0 0 1 6.5 4H17a4 4 0 0 1 4 4v8.5A3.5 3.5 0 0 1 17.5 20h-11A3.5 3.5 0 0 1 3 16.5v-9zM6.5 5.5A2 2 0 0 0 4.5 7.5v9A2 2 0 0 0 6.5 18.5h11a2 2 0 0 0 2-2V8a2.5 2.5 0 0 0-2.5-2.5H6.5zM16 12.25a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0z"></path></svg>
+        </span>
+        <h3>FSA and HSA cards</h3>
+        <p>Most dental treatment qualifies as an eligible expense under Flexible Spending Accounts and Health Savings Accounts. We accept these cards directly at checkout.</p>
+      </li>
+    </ul>
+    <aside class="rs-ins__policy" aria-labelledby="rs-ins-no-surprises">
+      <div>
+        <h3 id="rs-ins-no-surprises">Our No-Surprises Policy</h3>
+        <p>Before any treatment beyond a routine exam or cleaning, we provide a written pre-treatment estimate outlining the recommended procedure, the cost, and what your insurance is expected to cover. You'll always know what to expect before we begin, with no surprise charges after the fact.</p>
+      </div>
+      <ul class="rs-ins__policy-list">
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M6.2 11.2 3.4 8.4l1.2-1.2 1.6 1.6 5.2-5.2 1.2 1.2z"></path></svg>
+          Recommended procedure
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M6.2 11.2 3.4 8.4l1.2-1.2 1.6 1.6 5.2-5.2 1.2 1.2z"></path></svg>
+          The cost
+        </li>
+        <li>
+          <svg aria-hidden="true" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M6.2 11.2 3.4 8.4l1.2-1.2 1.6 1.6 5.2-5.2 1.2 1.2z"></path></svg>
+          What insurance is expected to cover
+        </li>
+      </ul>
+    </aside>
+  </section>
+
+  <!--
+    (f-2) In-House Membership Plan
+    ⚠️ CONTENT PENDING — DO NOT PUBLISH UNTIL FILLED IN
+    Keep this slot in the layout. Do not remove or collapse.
+    Drop final copy, pricing, and terms into .rs-ins__plan slots.
+  -->
+  <section class="rs-ins__section" id="rs-ins-membership" aria-labelledby="rs-ins-membership-title">
+    <div class="rs-ins__membership">
+      <div class="rs-ins__section-head">
+        <p class="rs-ins__kicker">Without insurance</p>
+        <h2 class="rs-ins__section-title" id="rs-ins-membership-title">In-House Membership Plan</h2>
+      </div>
+      <div class="rs-ins__plans">
+        <article class="rs-ins__plan" data-plan-slot="1"></article>
+        <article class="rs-ins__plan" data-plan-slot="2"></article>
+        <article class="rs-ins__plan" data-plan-slot="3"></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="rs-ins__section rs-ins-faq" aria-labelledby="rs-ins-faq-heading">
+    <div class="rs-ins__section-head">
+      <p class="rs-ins__kicker">Quick answers</p>
+      <h2 class="rs-ins__section-title" id="rs-ins-faq-heading">Insurance FAQ</h2>
+    </div>
+    <ul class="rs-ins-faq__list" id="rs-ins-faq-list">
+      <li class="rs-ins-faq__item">
+        <h3 class="rs-ins-faq__q">
+          <button class="rs-ins-faq__toggle" type="button" id="rs-ins-faq-q-insurance" aria-expanded="true" aria-controls="rs-ins-faq-a-insurance">
+            <span class="rs-ins-faq__question">Do you take my insurance?</span>
+            <span class="rs-ins-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-ins-faq__a" id="rs-ins-faq-a-insurance" role="region" aria-labelledby="rs-ins-faq-q-insurance">
+          <p>We are a participating, in-network provider with Delta Dental. We're out-of-network with all other insurance carriers, but we're happy to submit claims on your behalf. Many PPO plans offer partial out-of-network reimbursement. Call us at <a href="tel:+16095851410">(609) 585-1410</a> and we'll help you understand your specific benefits before your visit.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you take my insurance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are a participating, in-network provider with Delta Dental. We're out-of-network with all other insurance carriers, but we're happy to submit claims on your behalf. Many PPO plans offer partial out-of-network reimbursement. Call us at (609) 585-1410 and we'll help you understand your specific benefits before your visit."
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+  (function () {
+    const root = document.querySelector(".rs-ins");
+    if (!root) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function activate(items, current, activeClass, dimClass) {
+      items.forEach((item) => {
+        const on = item === current;
+        item.classList.toggle(activeClass, on);
+        if (dimClass) item.classList.toggle(dimClass, Boolean(current) && !on);
+      });
+    }
+
+    function onActivate(el, fn) {
+      el.addEventListener("click", (event) => {
+        if (event.target.closest("a")) return;
+        fn(event);
+      });
+      el.addEventListener("keydown", (event) => {
+        if (event.target.closest("a")) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          fn(event);
+        }
+      });
+    }
+
+    function scrollToId(id) {
+      const target = root.querySelector(id);
+      if (!target) return;
+      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    }
+
+    const jumpLinks = Array.from(root.querySelectorAll(".rs-ins__jump a"));
+    jumpLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const id = link.getAttribute("href");
+        if (!id || id.charAt(0) !== "#") return;
+        event.preventDefault();
+        scrollToId(id);
+      });
+    });
+
+    const spySections = [
+      ["#rs-ins-delta", "#rs-ins-delta"],
+      ["#rs-ins-oon", "#rs-ins-oon"],
+      ["#rs-ins-oon-meaning", "#rs-ins-oon-meaning"],
+      ["#rs-ins-ppo", "#rs-ins-ppo"],
+      ["#rs-ins-verify", "#rs-ins-verify"],
+      ["#rs-ins-pay", "#rs-ins-pay"],
+      ["#rs-ins-faq-heading", "#rs-ins-faq-heading"]
+    ].map(([href, sel]) => ({
+      href,
+      el: root.querySelector(sel)
+    })).filter((item) => item.el);
+
+    if ("IntersectionObserver" in window && spySections.length) {
+      const spyMap = new Map();
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          spyMap.set(entry.target, entry.isIntersecting && entry.intersectionRatio > 0.25);
+        });
+        let current = null;
+        spySections.forEach((item) => {
+          if (spyMap.get(item.el)) current = item;
+        });
+        jumpLinks.forEach((link) => {
+          const on = Boolean(current) && link.getAttribute("href") === current.href;
+          link.classList.toggle("is-active", on);
+          if (on) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        });
+      }, { threshold: [0.25, 0.5], rootMargin: "-15% 0px -55% 0px" });
+      spySections.forEach((item) => spy.observe(item.el));
+    }
+
+    const planInputs = Array.from(root.querySelectorAll('input[name="rs-ins-plan"]'));
+    const serviceInputs = Array.from(root.querySelectorAll('input[name="rs-ins-service"]'));
+    const result = root.querySelector("#rs-ins-check-result");
+    const deltaCard = root.querySelector("#rs-ins-delta");
+    const otherCard = root.querySelector("#rs-ins-oon");
+    const networkCards = [deltaCard, otherCard].filter(Boolean);
+    const tiers = Array.from(root.querySelectorAll(".rs-ins__tier"));
+
+    const services = {
+      preventive: {
+        label: "Preventive care",
+        text: "Preventive care (cleanings, exams, X-rays) is usually covered at 80 to 100%."
+      },
+      basic: {
+        label: "Basic services",
+        text: "Basic services (fillings, extractions, root canals) are typically covered around 70 to 80%."
+      },
+      major: {
+        label: "Major services",
+        text: "Major services (crowns, bridges, dentures, implants) are usually covered around 50%."
+      }
+    };
+
+    function selectedValue(inputs) {
+      const picked = inputs.find((input) => input.checked);
+      return picked ? picked.value : "";
+    }
+
+    function setPlan(value, scrollCheck) {
+      planInputs.forEach((input) => {
+        input.checked = input.value === value;
+      });
+      renderCheck();
+      if (scrollCheck) scrollToId("#rs-ins-check");
+    }
+
+    function setService(value, scrollCheck) {
+      serviceInputs.forEach((input) => {
+        input.checked = input.value === value;
+      });
+      renderCheck();
+      if (scrollCheck) scrollToId("#rs-ins-check");
+    }
+
+    function renderCheck() {
+      const plan = selectedValue(planInputs);
+      const service = selectedValue(serviceInputs);
+      const tier = services[service];
+
+      activate(networkCards, plan === "delta" ? deltaCard : plan === "other" ? otherCard : null, "is-active", "is-dim");
+      activate(tiers, tier ? root.querySelector('.rs-ins__tier[data-service="' + service + '"]') : null, "is-active", "is-dim");
+
+      if (!result) return;
+
+      if (!plan && !service) {
+        result.className = "rs-ins__result";
+        result.innerHTML = "<p class=\"rs-ins__result-kicker\">Your snapshot</p><h3>Select both options above</h3><p>We'll match your choices to the in-network, out-of-network, and PPO coverage details on this page.</p>";
+        return;
+      }
+
+      if (!plan || !service) {
+        result.className = "rs-ins__result";
+        result.innerHTML = "<p class=\"rs-ins__result-kicker\">Keep going</p><h3>" + (plan ? "Now choose a service" : "Now choose your insurance") + "</h3><p>Select the remaining option to see a typical snapshot for your visit.</p>";
+        return;
+      }
+
+      let html = "";
+      if (plan === "delta") {
+        result.className = "rs-ins__result is-in";
+        html = "<p class=\"rs-ins__result-kicker\">In-network</p><h3>Delta Dental Participation</h3><p>We are a participating provider with Delta Dental. If you have Delta Dental coverage, you're seeing an in-network dentist, and your plan's negotiated rates apply directly to your visit. " + tier.text + "</p>";
+      } else if (plan === "other") {
+        result.className = "rs-ins__result";
+        html = "<p class=\"rs-ins__result-kicker\">Out-of-network</p><h3>Out-of-Network Status with All Other Carriers</h3><p>For all other insurance carriers, we are out-of-network. This means we don't have a direct contract with them. Being out-of-network doesn't mean we can't see you. We still welcome and treat patients with any insurance plan. We file claims to your insurance carrier on your behalf, so you don't have to, and where your plan permits it, we accept assignment of benefits, meaning your insurer can pay us directly rather than reimbursing you after the fact. " + tier.text + " Out-of-network benefits often follow the same tiers, though reimbursement may be based on a different fee schedule.</p>";
+      } else {
+        result.className = "rs-ins__result";
+        html = "<p class=\"rs-ins__result-kicker\">Payment options</p><h3>Payment and Financing Options</h3><p>We accept major credit cards — Visa, MasterCard, American Express, and Discover — cash and personal checks, CareCredit, and FSA and HSA cards. Before any treatment beyond a routine exam or cleaning, we provide a written pre-treatment estimate outlining the recommended procedure, the cost, and what your insurance is expected to cover.</p>";
+      }
+
+      html += "<div class=\"rs-ins__result-actions\"><button class=\"rs-ins__cta\" type=\"button\" data-go=\"#rs-ins-verify\">Get a written estimate</button><a class=\"rs-ins__cta rs-ins__cta--ghost\" href=\"tel:+16095851410\">Call (609) 585-1410</a></div>";
+      result.innerHTML = html;
+    }
+
+    planInputs.concat(serviceInputs).forEach((input) => {
+      input.addEventListener("change", () => renderCheck());
+    });
+
+    root.querySelectorAll(".rs-ins__pick").forEach((button) => {
+      button.addEventListener("click", () => setPlan(button.getAttribute("data-plan"), true));
+    });
+
+    tiers.forEach((tier) => {
+      onActivate(tier, () => setService(tier.getAttribute("data-service"), false));
+    });
+
+    root.querySelectorAll(".rs-ins__chip").forEach((chip) => {
+      chip.addEventListener("click", (event) => {
+        event.stopPropagation();
+        setService(chip.getAttribute("data-service"), false);
+      });
+    });
+
+    result.addEventListener("click", (event) => {
+      const go = event.target.closest("[data-go]");
+      if (!go) return;
+      scrollToId(go.getAttribute("data-go"));
+    });
+
+    const points = Array.from(root.querySelectorAll(".rs-ins__point"));
+    points.forEach((point) => {
+      onActivate(point, () => activate(points, point, "is-active"));
+    });
+
+    const steps = Array.from(root.querySelectorAll(".rs-ins__steps li"));
+    steps.forEach((step) => {
+      onActivate(step, () => activate(steps, step, "is-active"));
+    });
+
+    const pays = Array.from(root.querySelectorAll(".rs-ins__pay-item"));
+    pays.forEach((item) => {
+      onActivate(item, () => activate(pays, item, "is-active"));
+    });
+
+    root.querySelectorAll(".rs-ins__meter").forEach((meter) => {
+      const fill = meter.getAttribute("data-fill") || "50%";
+      meter.style.setProperty("--rs-ins-fill", fill);
+      if (reduce || !("IntersectionObserver" in window)) {
+        meter.classList.add("is-in");
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            meter.classList.add("is-in");
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      io.observe(meter);
+    });
+
+    const faq = root.querySelector(".rs-ins-faq");
+    if (faq) {
+      const items = Array.from(faq.querySelectorAll(".rs-ins-faq__item"));
+      function setExpanded(item, open) {
+        const toggle = item.querySelector(".rs-ins-faq__toggle");
+        const panel = item.querySelector(".rs-ins-faq__a");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        panel.hidden = !open;
+      }
+      items.forEach((item) => {
+        item.querySelector(".rs-ins-faq__toggle").addEventListener("click", () => {
+          const toggle = item.querySelector(".rs-ins-faq__toggle");
+          const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+          items.forEach((other) => {
+            if (other !== item) setExpanded(other, false);
+          });
+          setExpanded(item, willOpen);
+        });
+      });
+    }
+  })();
+</script>
