@@ -1,0 +1,770 @@
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does a first appointment take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plan on about 60 to 75 minutes for a thorough exam, X-rays, and a chance to ask questions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I bring to my first visit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bring a photo ID, your insurance card if you have one, and a list of any medications you're currently taking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I fill out new patient paperwork before I arrive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Download and print your forms in advance from our Patient Forms page, or arrive 10 to 15 minutes early to fill them out in our office."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I don't have dental insurance. Can I still book a first visit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we welcome patients with or without insurance. Visit our Insurance and Payment Options page for details on coverage, financing, and payment plans."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:            #FFFFFF;
+    --bg-panel:      #9daccd1a;
+    --bg-open:       #9daccd36;
+    --gold-tint:     #e8f7fd;
+    --navy:          #254594;
+    --navy-deep:     #01a1ea;
+    --ink:           #485f87;
+    --ink-soft:      #485f87;
+    --line:          #bfc8db;
+    --urgent:        #01a1ea;
+    --urgent-dark:   #0290d2;
+    --gold:          #01a1ea;
+    --white:         #FFFFFF;
+    --primary:       #9daccd;
+
+    --radius: 4px;
+    --shadow: 0 12px 32px -16px rgba(37, 69, 148, 0.28);
+  }
+
+
+
+
+
+
+  .title-lead{
+    font-style:italic;
+    font-weight:600;
+    color:var(--primary);
+    padding-right:.15em;
+  }
+
+  .eyebrow{
+    margin:0 0 16px;
+    font-size:14px;
+    font-weight:300;
+    line-height:18px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+
+  section{
+    padding:36px 0;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:none; }
+
+  /* BUTTONS — brand styles from dental-implants.html */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:10px 18px;
+    border-radius:4px;
+    border:0;
+    background:var(--navy);
+    color:var(--white);
+    font-family:var(--display);
+    font-size:18px;
+    font-weight:500;
+    line-height:24px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    text-decoration:none !important;
+    cursor:pointer;
+    transition:background-color .2s ease, color .2s ease;
+  }
+
+  .btn a{
+    text-decoration:none;
+  }
+  .btn:hover,
+  .btn:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+  }
+  .btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .btn-secondary{
+    background:transparent;
+    color:var(--navy);
+    box-shadow:inset 0 0 0 1.5px currentColor;
+  }
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+    box-shadow:none;
+  }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:1.4em; }
+
+  .phone-btn{
+    display:inline-flex;
+    flex-shrink:0;
+    align-items:center;
+    gap:16px;
+    padding:12px 18px;
+    border-radius:4px;
+    background:var(--navy);
+    color:var(--white);
+    font-family:var(--display);
+    font-size:24px;
+    font-weight:400;
+    line-height:24px;
+    text-decoration:none;
+    text-transform:none;
+    letter-spacing:0;
+    transition:background-color .2s ease;
+  }
+  .phone-btn:hover,
+  .phone-btn:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+  }
+  .phone-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .phone-btn svg{ display:block; width:20px; height:20px; fill:currentColor; }
+
+  .section-head{ max-width:720px; margin-bottom:1.15em; }
+  .section-head p{ color:var(--ink-soft); margin:0; }
+
+  .faq-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px 32px;
+    margin-bottom:28px;
+  }
+  .faq-head .section-head{ margin-bottom:0; }
+
+  /* INTRO */
+  .np-intro .lede{
+    max-width:640px;
+    margin:16px 0 0;
+    color:var(--ink-soft);
+  }
+
+  /* CHECKLIST */
+  .checklist{ display:grid; gap:10px; }
+  .checklist-item{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    background:var(--white);
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    cursor:pointer;
+    text-align:left;
+    transition:border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .checklist-item:hover{ border-color:var(--navy); }
+  .checklist-item.is-checked{
+    border-color:var(--gold);
+    background:var(--bg-panel);
+    box-shadow:var(--shadow);
+  }
+  .checklist-item:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .checklist-box{
+    flex-shrink:0;
+    width:24px;
+    height:24px;
+    margin-top:2px;
+    border-radius:var(--radius);
+    border:1.5px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    color:transparent;
+    transition:background-color .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .checklist-item.is-checked .checklist-box{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:var(--white);
+  }
+  .checklist-text h3{ font-size:18px; font-weight:600; margin:0 0 .2em; letter-spacing:0; }
+  .checklist-text p{ margin:0; color:var(--ink-soft); }
+  .checklist-progress{
+    margin-top:16px;
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* TIMELINE */
+  .visit-timeline{
+    counter-reset:step;
+    display:grid;
+    border-left:1.5px solid var(--line);
+    margin-left:14px;
+  }
+  .visit-step{ position:relative; padding:0 0 36px 34px; }
+  .visit-step:last-child{ padding-bottom:4px; }
+  .visit-step::before{
+    counter-increment:step;
+    content:counter(step);
+    position:absolute;
+    left:-15px;
+    top:0;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--white);
+    font-size:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .visit-step h3{ font-size:22px; margin-bottom:.3em; }
+  .visit-step p{ color:var(--ink-soft); margin:0; }
+  .visit-step .step-time{
+    display:inline-flex;
+    align-items:center;
+    min-height:32px;
+    margin-bottom:.5em;
+    padding:4px 12px;
+    border-radius:var(--radius);
+    background:var(--bg-panel);
+    color:var(--ink);
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+
+  /* TIME BANNER */
+  .time-banner{
+    background:var(--navy);
+    border-radius:var(--radius);
+    padding:32px 36px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+    color:var(--white);
+  }
+  .time-banner .big-num{
+    font-size:48px;
+    font-weight:600;
+    line-height:1;
+    letter-spacing:-1px;
+  }
+  .time-banner .label{
+    margin-top:6px;
+    font-size:14px;
+    font-weight:300;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--primary);
+  }
+  .time-banner p{ margin:0; color:var(--primary); max-width:420px; }
+
+  /* PREPARE */
+  .prepare-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap:12px;
+  }
+  .prepare-card{
+    background:var(--white);
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 22px;
+  }
+  .prepare-card .eyebrow{ margin-bottom:.6em; }
+  .prepare-card h3{ font-size:22px; margin-bottom:.4em; }
+  .prepare-card p{ color:var(--ink-soft); margin:0; }
+
+  /* INSURANCE NOTE */
+  .insurance-note{
+    background:var(--bg-panel);
+    border-radius:var(--radius);
+    padding:36px 32px;
+  }
+  .insurance-note h2{ font-size:clamp(28px, 3vw, 36px); }
+  .insurance-note p{ color:var(--ink-soft); max-width:640px; }
+  .insurance-note .btn{ margin-top:8px; }
+
+  /* FAQ */
+  .rs-faq button,
+  .rs-faq button:hover,
+  .rs-faq button:focus,
+  .rs-faq button:focus-visible,
+  .rs-faq button:active{
+    appearance:none;
+    -webkit-appearance:none;
+    border:0;
+    box-shadow:none;
+    text-decoration:none;
+    background-image:none;
+  }
+  .rs-faq__list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .rs-faq__item{
+    border-radius:4px;
+    background:var(--bg-panel);
+    transition:background-color .2s ease;
+  }
+  .rs-faq__item:has(.rs-faq__toggle[aria-expanded="true"]){
+    background:var(--bg-open);
+  }
+  .rs-faq__item:hover,
+  .rs-faq__item:has(.rs-faq__toggle:focus-visible){
+    background:var(--gold-tint);
+  }
+  .rs-faq__q{
+    margin:0;
+    font-size:18px;
+    font-weight:400;
+    letter-spacing:0;
+  }
+  .rs-faq__toggle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    width:100%;
+    padding:16px 20px;
+    border:0;
+    border-radius:4px;
+    background:transparent;
+    background-color:transparent;
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:18px;
+    font-weight:400;
+    line-height:28px;
+    letter-spacing:0;
+    text-transform:none;
+    text-decoration:none;
+    text-align:left;
+    cursor:pointer;
+    transition:color .2s ease;
+  }
+  .rs-faq button.rs-faq__toggle,
+  .rs-faq button.rs-faq__toggle:hover,
+  .rs-faq button.rs-faq__toggle:focus,
+  .rs-faq button.rs-faq__toggle:focus-visible,
+  .rs-faq button.rs-faq__toggle:active{
+    background:transparent;
+    background-color:transparent;
+    background-image:none;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .rs-faq .rs-faq__item:hover button.rs-faq__toggle,
+  .rs-faq .rs-faq__item:hover button.rs-faq__toggle:hover,
+  .rs-faq .rs-faq__item:hover button.rs-faq__toggle:focus,
+  .rs-faq button.rs-faq__toggle:hover,
+  .rs-faq button.rs-faq__toggle:focus,
+  .rs-faq button.rs-faq__toggle:focus-visible,
+  .rs-faq button.rs-faq__toggle:active{
+    background:#e8f7fd;
+    background-color:#e8f7fd;
+    color:var(--navy);
+    text-decoration:none;
+  }
+  .rs-faq__toggle[aria-expanded="true"]{ color:var(--navy); }
+  .rs-faq__toggle:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .rs-faq__question{
+    flex:1 1 auto;
+    min-width:0;
+    font-size:18px;
+    line-height:28px;
+  }
+  .rs-faq__icon{
+    display:grid;
+    flex:0 0 28px;
+    place-items:center;
+    width:28px;
+    height:28px;
+    padding:6px;
+    border:1.5px solid var(--ink);
+    border-radius:50%;
+    background:transparent;
+    transition:transform .25s ease, background-color .15s ease;
+  }
+  .rs-faq__icon svg{ display:block; width:100%; height:100%; fill:var(--ink); }
+  .rs-faq__toggle[aria-expanded="true"] .rs-faq__icon{
+    background:var(--ink);
+    transform:rotate(45deg);
+  }
+  .rs-faq__toggle[aria-expanded="true"] .rs-faq__icon svg{ fill:var(--white); }
+  .rs-faq__a{ padding:4px 20px 18px; }
+  .rs-faq__a[hidden]{ display:none !important; }
+  .rs-faq__a p{
+    margin:16px 0 0;
+    color:var(--ink);
+    font-size:18px;
+    font-weight:400;
+    line-height:28px;
+  }
+  .rs-faq__a a{ color:var(--navy); text-decoration:none; }
+  .rs-faq__a a:hover{ color:var(--gold); }
+
+  @media (max-width:900px){
+    .page{ padding:0 20px; }
+    .faq-head{
+      flex-direction:column;
+      align-items:flex-start;
+    }
+  }
+
+  @media (max-width:767px){
+    .page{ padding:0 16px; }
+    section{ padding:24px 0; }
+    h1{ font-size:clamp(28px, 8vw, 36px); }
+    h2{ font-size:clamp(24px, 6.5vw, 32px); }
+
+    .phone-btn{
+      width:100%;
+      justify-content:center;
+      font-size:20px;
+      gap:12px;
+    }
+
+    .hero-cta{
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .hero-cta .btn{ width:100%; }
+
+    .checklist-item,
+    .prepare-card,
+    .insurance-note{ padding:16px; }
+    .time-banner{ padding:24px 16px; }
+    .rs-faq__toggle{ padding:14px 16px; gap:12px; }
+    .rs-faq__question{ max-width:calc(100% - 40px); }
+    .rs-faq__a{ padding:0 16px 16px; }
+  }
+
+  @media (max-width:480px){
+    .page{ padding:0 14px; }
+    section{ padding:20px 0; }
+    .eyebrow{ letter-spacing:3px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+    .reveal{ opacity:1; transform:none; }
+    .rs-faq__item,
+    .rs-faq__toggle,
+    .rs-faq__icon,
+    .phone-btn,
+    .btn{
+      transition:none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <section class="np-intro">
+    <p class="eyebrow">New patients welcome</p>
+    <h1><span class="title-lead">Your first visit,</span> made easy</h1>
+    <p class="lede">Everything you need to know before you come in, so your first appointment feels simple from the moment you walk through the door.</p>
+    <div class="hero-cta">
+      <a href="/contact-us" class="btn btn-primary">Book Your First Visit</a>
+      <a href="tel:+16095851410" class="btn btn-secondary">Call (609) 585-1410</a>
+    </div>
+  </section>
+
+  <section class="reveal" id="bring">
+    <div class="section-head">
+      <h2><span class="title-lead">What to</span> bring</h2>
+      <p>Tap each item as you gather it, so nothing gets left behind on your way out the door.</p>
+    </div>
+
+    <div class="checklist" id="bringChecklist">
+      <div class="checklist-item" role="button" tabindex="0">
+        <span class="checklist-box" aria-hidden="true">✓</span>
+        <div class="checklist-text">
+          <h3>Photo ID</h3>
+          <p>A driver's license, passport, or other government-issued ID.</p>
+        </div>
+      </div>
+      <div class="checklist-item" role="button" tabindex="0">
+        <span class="checklist-box" aria-hidden="true">✓</span>
+        <div class="checklist-text">
+          <h3>Insurance card</h3>
+          <p>If you have dental insurance. No insurance? That's okay too — we'll walk you through your options.</p>
+        </div>
+      </div>
+      <div class="checklist-item" role="button" tabindex="0">
+        <span class="checklist-box" aria-hidden="true">✓</span>
+        <div class="checklist-text">
+          <h3>List of current medications</h3>
+          <p>Anything you're currently taking, including dosage if you have it handy.</p>
+        </div>
+      </div>
+      <div class="checklist-item" role="button" tabindex="0">
+        <span class="checklist-box" aria-hidden="true">✓</span>
+        <div class="checklist-text">
+          <h3>Completed new patient forms</h3>
+          <p>Optional, but saves time. Download them in advance from our Patient Forms page.</p>
+        </div>
+      </div>
+    </div>
+    <p class="checklist-progress" id="checklistProgress">0 of 4 ready</p>
+  </section>
+
+  <section class="reveal" id="expect">
+    <div class="section-head">
+      <h2><span class="title-lead">What to expect</span> at your first visit</h2>
+    </div>
+    <div class="visit-timeline">
+      <div class="visit-step">
+        <span class="step-time">First few minutes</span>
+        <h3>Check-in &amp; Paperwork</h3>
+        <p>If you haven't filled out your forms in advance, we'll get you set up when you arrive. Arriving 10–15 minutes early gives you plenty of time.</p>
+      </div>
+      <div class="visit-step">
+        <span class="step-time">~20 minutes</span>
+        <h3>Exam &amp; Digital X-Rays</h3>
+        <p>A thorough look at your teeth, gums, and jaw, along with digital X-rays to catch anything that isn't visible to the eye.</p>
+      </div>
+      <div class="visit-step">
+        <span class="step-time">~15 minutes</span>
+        <h3>Conversation with Dr. Shah</h3>
+        <p>We'll walk you through what we found, answer your questions, and talk through any recommended next steps, honestly and without pressure.</p>
+      </div>
+      <div class="visit-step">
+        <span class="step-time">Remaining time</span>
+        <h3>Cleaning, If Time Allows</h3>
+        <p>Many first visits include a cleaning the same day. If more time is needed, we'll schedule your cleaning for a follow-up visit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="time-banner">
+      <div>
+        <div class="big-num">60–75</div>
+        <div class="label">Minutes</div>
+      </div>
+      <p>That's roughly how long to plan for on your first visit, exam, X-rays, and a full conversation about your care included.</p>
+    </div>
+  </section>
+
+  <section class="reveal" id="prepare">
+    <div class="section-head">
+      <h2><span class="title-lead">How to</span> prepare</h2>
+    </div>
+    <div class="prepare-grid">
+      <div class="prepare-card">
+        <p class="eyebrow">Before you arrive</p>
+        <h3>Fill Out Forms Early</h3>
+        <p>Download your new patient forms and bring them completed to save time at check-in.</p>
+      </div>
+      <div class="prepare-card">
+        <p class="eyebrow">Getting here</p>
+        <h3>Plan Your Route</h3>
+        <p>We're right on Route 33 with free, on-site parking. Get directions to our office.</p>
+      </div>
+      <div class="prepare-card">
+        <p class="eyebrow">First-timers</p>
+        <h3>Write Down Questions</h3>
+        <p>Jot down anything you'd like to ask Dr. Shah. There's no such thing as a small question.</p>
+      </div>
+      <div class="prepare-card">
+        <p class="eyebrow">For kids</p>
+        <h3>Bring the Whole Family</h3>
+        <p>We welcome patients of every age in a calm, friendly setting, from first teeth to golden years.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" id="insurance">
+    <div class="insurance-note">
+      <h2><span class="title-lead">No insurance?</span> No problem.</h2>
+      <p>We welcome patients with or without dental insurance. We're a participating provider with Delta Dental, and can help patients with other plans or no coverage understand their options, including payment plans and CareCredit financing.</p>
+      <a href="/insurance-payment-options" class="btn btn-secondary">See insurance &amp; payment options</a>
+    </div>
+  </section>
+
+  <section class="reveal rs-faq" id="faq">
+    <div class="faq-head">
+      <div class="section-head">
+        <p class="eyebrow">Patient questions</p>
+        <h2><span class="title-lead">Your questions,</span> answered.</h2>
+      </div>
+      <a class="phone-btn" href="tel:+16095851410" style="text-decoration:none">
+        <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
+        </svg>
+        <span>609-585-1410</span>
+      </a>
+    </div>
+    <ul class="rs-faq__list" id="faqList">
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-length" aria-expanded="true" aria-controls="faq-a-length">
+            <span class="rs-faq__question">How long does a first appointment take?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-length" role="region" aria-labelledby="faq-q-length">
+          <p>Plan on about 60 to 75 minutes for a thorough exam, X-rays, and a chance to ask questions.</p>
+        </div>
+      </li>
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-bring" aria-expanded="false" aria-controls="faq-a-bring">
+            <span class="rs-faq__question">What should I bring to my first visit?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-bring" role="region" aria-labelledby="faq-q-bring" hidden>
+          <p>Bring a photo ID, your insurance card if you have one, and a list of any medications you're currently taking.</p>
+        </div>
+      </li>
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-forms" aria-expanded="false" aria-controls="faq-a-forms">
+            <span class="rs-faq__question">Can I fill out new patient paperwork before I arrive?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-forms" role="region" aria-labelledby="faq-q-forms" hidden>
+          <p>Yes. Download and print your forms in advance from our <a href="/patient-forms">Patient Forms</a> page, or arrive 10 to 15 minutes early to fill them out in our office.</p>
+        </div>
+      </li>
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-insurance" aria-expanded="false" aria-controls="faq-a-insurance">
+            <span class="rs-faq__question">I don't have dental insurance. Can I still book a first visit?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-insurance" role="region" aria-labelledby="faq-q-insurance" hidden>
+          <p>Yes, we welcome patients with or without insurance. Visit our <a href="/insurance-payment-options">Insurance and Payment Options</a> page for details on coverage, financing, and payment plans.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<script>
+  function onActivate(el, fn){
+    el.addEventListener('click', fn);
+    el.addEventListener('keydown', function(event){
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        fn();
+      }
+    });
+  }
+
+  var checklistItems = document.querySelectorAll('#bringChecklist .checklist-item');
+  var progressLabel = document.getElementById('checklistProgress');
+
+  function updateProgress(){
+    var checked = document.querySelectorAll('#bringChecklist .checklist-item.is-checked').length;
+    progressLabel.textContent = checked + ' of ' + checklistItems.length + ' ready';
+  }
+
+  checklistItems.forEach(function(item){
+    onActivate(item, function(){
+      item.classList.toggle('is-checked');
+      updateProgress();
+    });
+  });
+
+  (function(){
+    var items = Array.from(document.querySelectorAll('#faqList .rs-faq__item'));
+    function setExpanded(item, open){
+      var toggle = item.querySelector('.rs-faq__toggle');
+      var panel = item.querySelector('.rs-faq__a');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.hidden = !open;
+    }
+    function closeAll(except){
+      items.forEach(function(item){
+        if(item !== except) setExpanded(item, false);
+      });
+    }
+    items.forEach(function(item){
+      var toggle = item.querySelector('.rs-faq__toggle');
+      toggle.addEventListener('click', function(){
+        var willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+        closeAll(item);
+        setExpanded(item, willOpen);
+      });
+    });
+  })();
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+</script>
+
+</body>
+</html>

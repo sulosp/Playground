@@ -1,0 +1,1221 @@
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long do dental implants last?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With proper care, dental implants can last 20 years or longer, and the implant post itself often lasts a lifetime. The crown on top may need replacement after 10 to 15 years of normal wear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does getting a dental implant hurt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The placement procedure is done under local anesthesia, so you shouldn't feel pain during the procedure. Mild soreness afterward is normal and typically managed with over-the-counter pain relievers for a few days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do dental implants cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cost depends on how many teeth are being replaced and whether bone grafting is needed. We provide a written pre-treatment estimate after your consultation so you know the full cost before deciding to move forward."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Am I too old for dental implants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no upper age limit for dental implants. What matters most is having healthy gums and enough jawbone to support the implant, which we evaluate during your consultation."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:            #FFFFFF;
+    --bg-panel:      #9daccd1a;
+    --bg-open:       #9daccd36;
+    --navy:          #254594;
+    --navy-deep:     #01a1ea;
+    --ink:           #485f87;
+    --ink-soft:      #485f87;
+    --line:          #bfc8db;
+    --urgent:        #01a1ea;
+    --urgent-dark:   #0290d2;
+    --urgent-tint:   #e8f7fd;
+    --gold:          #01a1ea;
+    --gold-tint:     #e8f7fd;
+    --white:         #FFFFFF;
+    --primary:       #9daccd;
+
+    --radius: 4px;
+    --shadow: 0 12px 32px -16px rgba(37, 69, 148, 0.28);
+  }
+
+
+  img, svg{ max-width:100%; height:auto; }
+
+  .title-lead{
+    font-style:italic;
+    font-weight:600;
+    color:var(--primary);
+    padding-right:.15em;
+  }
+
+  .eyebrow{
+    margin:0 0 16px;
+    font-size:14px;
+    font-weight:300;
+    line-height:18px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+
+
+  section{
+    padding:64px 0;
+    scroll-margin-top:88px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:none; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:10px 18px;
+    border-radius:4px;
+    border:0;
+    background:var(--navy);
+    color:var(--white);
+    font-size:18px;
+    font-weight:500;
+    line-height:24px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    text-decoration:none;
+    cursor:pointer;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .btn:hover,
+  .btn:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+  }
+  .btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .btn-secondary{
+    background:transparent;
+    color:var(--navy);
+    box-shadow:inset 0 0 0 1.5px currentColor;
+  }
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+    box-shadow:none;
+  }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:1.4em; }
+
+  .phone-btn{
+    display:inline-flex;
+    flex-shrink:0;
+    align-items:center;
+    gap:16px;
+    padding:12px 18px;
+    border-radius:4px;
+    background:var(--navy);
+    color:var(--white);
+    font-family:var(--display);
+    font-size:24px;
+    font-weight:400;
+    line-height:24px;
+    text-decoration:none;
+    text-transform:none;
+    letter-spacing:0;
+    transition:background-color .2s ease;
+  }
+  .phone-btn:hover,
+  .phone-btn:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+  }
+  .phone-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .phone-btn svg{ display:block; width:20px; height:20px; fill:currentColor; }
+
+  .jump{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:block;
+    margin:0 -24px 8px;
+    padding:12px 24px 14px;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  .jump-inner{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .jump a{
+    display:inline-flex;
+    align-items:center;
+    min-height:40px;
+    padding:8px 16px;
+    border-radius:4px;
+    background:var(--bg-panel);
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:16px;
+    font-weight:400;
+    line-height:1.2;
+    text-decoration:none;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .jump a:hover,
+  .jump a:focus-visible,
+  .jump a.is-active{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .jump a:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+
+  .section-head{ max-width:720px; margin-bottom:2em; }
+  .section-head p{ color:var(--ink-soft); margin:0; }
+
+  .faq-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px 32px;
+    margin-bottom:28px;
+  }
+  .faq-head .section-head{ margin-bottom:0; }
+.btn a{
+  text-decoration:none;
+}
+  /* ANATOMY */
+  .anatomy-wrap{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:48px;
+    align-items:center;
+  }
+
+  .anatomy-stage{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+  }
+  .anatomy-svg{ width:100%; max-width:260px; margin:0 auto; display:block; }
+  .anatomy-layer{
+    cursor:pointer;
+    transition:opacity .2s ease, filter .2s ease;
+  }
+  .anatomy-svg .anatomy-layer{ opacity:.42; }
+  .anatomy-layer:hover,
+  .anatomy-layer.is-active{ opacity:1; }
+  .anatomy-layer.is-active{ filter:drop-shadow(0 0 8px rgba(1,161,234,.45)); }
+
+  .anatomy-caption{
+    min-height:44px;
+    padding:8px 14px;
+    border-radius:4px;
+    background:var(--bg-panel);
+    color:var(--navy);
+    font-size:.9rem;
+    font-weight:600;
+    text-align:center;
+  }
+
+  .anatomy-list{ display:flex; flex-direction:column; gap:10px; }
+  .anatomy-item{
+    background:var(--white);
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    cursor:pointer;
+    text-align:left;
+    width:100%;
+    color:inherit;
+    transition:border-color .2s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+  }
+  .anatomy-item:hover{ border-color:var(--navy); }
+  .anatomy-item.is-active{
+    border-color:var(--gold);
+    box-shadow:var(--shadow);
+    background:var(--bg-panel);
+  }
+  .anatomy-item.is-dim{ opacity:.55; }
+  .anatomy-item:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .anatomy-item h3{ font-size:1.02rem; margin:0 0 .25em; display:flex; align-items:center; gap:.6em; }
+  .anatomy-swatch{ width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+  .anatomy-item p{ margin:0; color:var(--ink-soft); }
+
+  /* TYPES */
+  .types-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap:18px;
+  }
+  .type-card{
+    background:var(--white);
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 24px;
+    cursor:pointer;
+    text-align:left;
+    color:inherit;
+    width:100%;
+    transition:border-color .2s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
+  }
+  .type-card:hover{ border-color:var(--navy); }
+  .type-card.is-active{
+    background:var(--navy);
+    border-color:var(--navy);
+  }
+  .type-card.is-active .eyebrow,
+  .type-card.is-active h3,
+  .type-card.is-active p{ color:var(--white); }
+  .type-card.is-dim{ opacity:.55; }
+  .type-card:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .type-card .eyebrow{ margin-bottom:.6em; }
+  .type-card h3{ font-size:1.2rem; margin-bottom:.4em; }
+  .type-card p{ color:var(--ink-soft); margin:0; }
+
+  .type-result{
+    margin-top:18px;
+    padding:24px;
+    border-radius:4px;
+    background:var(--bg-panel);
+    min-height:96px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .type-result.is-picked{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .type-result.is-picked h3,
+  .type-result.is-picked p{ color:var(--white); }
+  .type-result h3{ font-size:1.25rem; margin-bottom:.4em; }
+  .type-result p{ margin:0; max-width:640px; }
+  .type-result .eyebrow{ margin-bottom:.5em; }
+  .type-result.is-picked .eyebrow{ color:var(--primary); }
+
+  /* PROCESS */
+  .process-timeline{
+    counter-reset:step;
+    display:grid;
+    border-left:2px solid var(--line);
+    margin-left:14px;
+  }
+  .process-step{
+    position:relative;
+    padding:0 0 12px 34px;
+    border:0;
+    background:transparent;
+    text-align:left;
+    width:100%;
+    color:inherit;
+    cursor:pointer;
+    border-radius:0 10px 10px 0;
+    transition:background .2s ease;
+  }
+  .process-step:last-child{ padding-bottom:4px; }
+  .process-step:hover,
+  .process-step.is-active{ background:var(--bg-open); }
+  .process-step:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .process-step::before{
+    counter-increment:step;
+    content:counter(step);
+    position:absolute; left:-17px; top:12px;
+    width:32px; height:32px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--white);
+    font-family:var(--mono);
+    font-size:.85rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .process-step.is-active::before{
+    background:var(--gold);
+    transform:scale(1.08);
+  }
+  .process-step-inner{ padding:12px 16px 16px 8px; }
+  .process-step h3{ font-size:1.1rem; margin-bottom:.3em; }
+  .process-step p{ color:var(--ink-soft); margin:0; }
+  .process-extra{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .process-step.is-active .process-extra{ max-height:280px; }
+  .process-extra p{
+    margin-top:.7em;
+    padding-top:.7em;
+    border-top:1px solid var(--line);
+  }
+
+  /* CANDIDATE QUIZ */
+  .candidate-panel{
+    background:var(--bg-panel);
+    border-radius:var(--radius);
+    padding:40px;
+  }
+  .candidate-panel h2{ font-size:1.5rem; }
+  .quiz-q{
+    margin:0 0 18px;
+    padding:0;
+    border:0;
+  }
+  .quiz-q legend{
+    margin:0 0 8px;
+    padding:0;
+    font-weight:400;
+    color:var(--navy);
+    font-size:18px;
+    line-height:28px;
+  }
+  .quiz-choices{ display:flex; flex-wrap:wrap; gap:8px; }
+  .quiz-choice{ position:relative; display:block; margin:0; cursor:pointer; }
+  .quiz-choice input{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    cursor:pointer;
+    margin:0;
+  }
+  .quiz-choice span{
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    padding:10px 18px;
+    border-radius:4px;
+    background:var(--white);
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:17px;
+    line-height:1.2;
+    transition:background .2s ease, color .2s ease;
+  }
+  .quiz-choice input:hover + span{ color:var(--navy); }
+  .quiz-choice input:checked + span{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .quiz-choice input:focus-visible + span{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  .candidate-result{
+    margin-top:8px;
+    padding:24px;
+    border-radius:4px;
+    background:var(--white);
+    min-height:120px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .candidate-result.is-yes{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .candidate-result.is-yes h3,
+  .candidate-result.is-yes p{ color:var(--white); }
+  .candidate-result.is-maybe{ background:var(--gold-tint); }
+  .candidate-result h3{ font-size:1.25rem; margin-bottom:.4em; }
+  .candidate-result p{ margin:0 0 14px; max-width:640px; }
+  .candidate-result p:last-child{ margin-bottom:0; }
+
+  /* COST */
+  .cost-note{
+    border-radius:var(--radius);
+    padding:40px;
+  }
+  .cost-note h2{ font-size:1.5rem; }
+  .cost-note > p{ color:var(--ink-soft); max-width:620px; }
+  .cost-toggles{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0; }
+  .cost-chip{
+    min-height:40px;
+    padding:8px 16px;
+    border-radius:4px;
+    border:0;
+    background:var(--bg-panel);
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:16px;
+    font-weight:400;
+    line-height:1.2;
+    cursor:pointer;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .cost-chip:hover{ color:var(--navy); }
+  .cost-chip.is-active{
+    background:var(--navy);
+    color:var(--white);
+  }
+  .cost-chip:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .cost-result{
+    padding:20px 0 0;
+    color:var(--ink);
+    max-width:640px;
+  }
+  .cost-result a{
+    color:var(--urgent-dark);
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1.5px solid currentColor;
+  }
+
+  /* FAQ — matches live site accordion */
+  .rs-faq__list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .rs-faq__q{
+    margin:0;
+    font-size:inherit;
+    font-weight:inherit;
+    letter-spacing:0;
+  }
+  .rs-faq__toggle{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    width:100%;
+    padding:16px 20px;
+    border:0;
+    border-radius:4px;
+    background:var(--bg-panel);
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:18px;
+    font-weight:400;
+    line-height:1.35;
+    letter-spacing:0;
+    text-align:left;
+    text-transform:none;
+    cursor:pointer;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .rs-faq__toggle:hover,
+  .rs-faq__toggle:focus{
+    background:var(--bg-panel);
+    color:var(--navy);
+  }
+  .rs-faq__toggle[aria-expanded="true"],
+  .rs-faq__toggle[aria-expanded="true"]:hover,
+  .rs-faq__toggle[aria-expanded="true"]:focus{
+    background:var(--bg-open);
+    color:var(--navy);
+  }
+  .rs-faq__toggle:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+  .rs-faq__question{ flex:1 1 auto; min-width:0; }
+  .rs-faq__icon{
+    display:grid;
+    flex:0 0 28px;
+    place-items:center;
+    width:28px;
+    height:28px;
+    padding:6px;
+    border:1.5px solid var(--ink);
+    border-radius:50%;
+    background:transparent;
+    transition:transform .25s ease, background-color .15s ease;
+  }
+  .rs-faq__icon svg{
+    display:block;
+    width:100%;
+    height:100%;
+    fill:var(--ink);
+  }
+  .rs-faq__toggle[aria-expanded="true"] .rs-faq__icon{
+    background:var(--ink);
+    transform:rotate(45deg);
+  }
+  .rs-faq__toggle[aria-expanded="true"] .rs-faq__icon svg{ fill:var(--white); }
+  .rs-faq__a{ padding:4px 20px 18px; }
+  .rs-faq__a[hidden]{ display:none !important; }
+  .rs-faq__a p{
+    margin:16px 0 0;
+    font-weight:400;
+    color:var(--ink);
+  }
+  .rs-faq__a a{ color:var(--navy); text-decoration:none; }
+  .rs-faq__a a:hover{ color:var(--gold); }
+
+  /* FINAL CTA */
+  .implants-final-cta{
+    text-align:center;
+    background:var(--navy);
+    width:100%;
+    margin:0;
+    padding:64px 32px;
+    color:var(--white);
+    border-top:0;
+    border-radius:var(--radius);
+  }
+  .implants-final-cta h2 .title-lead{ color:var(--primary); }
+  .implants-final-cta p{ color:var(--primary); margin-bottom:1.5em; }
+  .implants-final-cta .btn-primary{
+    background:var(--gold);
+    color:var(--white);
+  }
+  .implants-final-cta .btn-primary:hover,
+  .implants-final-cta .btn-primary:focus-visible{
+    background:var(--urgent-dark);
+  }
+  .implants-final-cta .btn-secondary{
+    color:var(--white);
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55);
+  }
+  .implants-final-cta .btn-secondary:hover,
+  .implants-final-cta .btn-secondary:focus-visible{
+    background:var(--gold);
+    color:var(--white);
+    box-shadow:none;
+  }
+  .implants-final-cta .hero-cta{ justify-content:center; }
+  .candidate-result.is-yes .btn-secondary{
+    color:var(--white);
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55);
+  }
+
+  @media (max-width:900px){
+    .page{ padding:24px 20px 0; }
+    .anatomy-wrap{
+      grid-template-columns:1fr;
+      gap:28px;
+    }
+    .anatomy-svg{ max-width:200px; }
+    .types-grid{ grid-template-columns:1fr; }
+    .jump{
+      margin-left:-20px;
+      margin-right:-20px;
+      padding-left:20px;
+      padding-right:20px;
+    }
+    .faq-head{
+      flex-direction:column;
+      align-items:flex-start;
+    }
+  }
+
+  @media (max-width:767px){
+    .page{ padding:20px 16px 0; }
+    section{
+      padding:40px 0;
+      scroll-margin-top:72px;
+    }
+    h1{ font-size:clamp(28px, 8vw, 36px); }
+    h2{ font-size:clamp(24px, 6.5vw, 32px); }
+    p, .quiz-q legend, .rs-faq__toggle, .rs-faq__a p{ font-size:18px; line-height:28px; }
+
+    .jump{
+      margin-left:-16px;
+      margin-right:-16px;
+      padding:10px 16px 12px;
+    }
+    .jump-inner{
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .jump-inner::-webkit-scrollbar{ display:none; }
+    .jump a{ flex:0 0 auto; white-space:nowrap; }
+
+    .phone-btn{
+      width:100%;
+      justify-content:center;
+      font-size:20px;
+      gap:12px;
+    }
+
+    .anatomy-item,
+    .type-card{ padding:16px; }
+    .type-result,
+    .candidate-result{ padding:18px 16px; min-height:0; }
+
+    .process-timeline{ margin-left:10px; }
+    .process-step{ padding-left:28px; }
+    .process-step-inner{ padding:10px 8px 14px 4px; }
+
+    .candidate-panel,
+    .cost-note{ padding:24px 16px; }
+
+    .quiz-choice{ flex:1 1 calc(50% - 8px); }
+    .quiz-choice span{ width:100%; justify-content:center; }
+
+    .cost-chip{ flex:1 1 auto; }
+
+    .rs-faq__toggle{ padding:14px 16px; gap:12px; }
+    .rs-faq__question{ max-width:calc(100% - 40px); }
+    .rs-faq__a{ padding:0 16px 16px; }
+
+    .hero-cta{
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .hero-cta .btn,
+    .candidate-result .btn{ width:100%; }
+
+    .implants-final-cta{ padding:64px 16px; }
+  }
+
+  @media (max-width:480px){
+    .page{ padding:16px 14px 0; }
+    .jump{
+      margin-left:-14px;
+      margin-right:-14px;
+      padding-left:14px;
+      padding-right:14px;
+    }
+    section{ padding:32px 0; }
+    .eyebrow{ letter-spacing:3px; }
+    .quiz-choice{ flex:1 1 100%; }
+    .anatomy-caption{ font-size:16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+    .reveal{ opacity:1; transform:none; }
+    .rs-faq__toggle,
+    .rs-faq__icon,
+    .phone-btn,
+    .btn,
+    .jump a{
+      transition:none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <nav class="jump" aria-label="On this page">
+    <div class="jump-inner">
+      <a href="#anatomy">How it works</a>
+      <a href="#types">Which type</a>
+      <a href="#process">The process</a>
+      <a href="#candidate">Am I a candidate</a>
+      <a href="#cost">Cost</a>
+      <a href="#book">Book</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+
+  <!-- ANATOMY -->
+  <section class="reveal" id="anatomy">
+    <div class="section-head">
+      <h1><span class="title-lead">What is a dental implant,</span> exactly?</h1>
+      <p>An implant has three parts working together. Tap a part — or the diagram — to see what it does.</p>
+    </div>
+
+    <div class="anatomy-wrap">
+      <div class="anatomy-stage">
+        <svg class="anatomy-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="anatomyCaption">
+          <g class="anatomy-layer" data-layer="crown" tabindex="0" role="button" aria-label="The crown">
+            <path d="M60 20 C60 5 140 5 140 20 L135 70 L65 70 Z" fill="#e8f7fd" stroke="#01a1ea" stroke-width="2"/>
+          </g>
+          <g class="anatomy-layer" data-layer="abutment" tabindex="0" role="button" aria-label="The abutment">
+            <rect x="85" y="70" width="30" height="45" fill="#9daccd" stroke="#254594" stroke-width="2"/>
+          </g>
+          <g class="anatomy-layer" data-layer="post" tabindex="0" role="button" aria-label="The post">
+            <rect x="90" y="115" width="20" height="140" rx="4" fill="#9daccd1a" stroke="#254594" stroke-width="2"/>
+            <line x1="94" y1="130" x2="106" y2="130" stroke="#254594" stroke-width="2"/>
+            <line x1="94" y1="150" x2="106" y2="150" stroke="#254594" stroke-width="2"/>
+            <line x1="94" y1="170" x2="106" y2="170" stroke="#254594" stroke-width="2"/>
+            <line x1="94" y1="190" x2="106" y2="190" stroke="#254594" stroke-width="2"/>
+          </g>
+        </svg>
+        <div class="anatomy-caption" id="anatomyCaption">The Crown — the visible tooth</div>
+      </div>
+
+      <div class="anatomy-list" id="anatomyList">
+        <div class="anatomy-item is-active" role="button" tabindex="0" data-layer="crown">
+          <h3><span class="anatomy-swatch" style="background:#01a1ea"></span>The Crown</h3>
+          <p>The visible, tooth-shaped part on top. Custom-made to match the color and shape of your natural teeth.</p>
+        </div>
+        <div class="anatomy-item" role="button" tabindex="0" data-layer="abutment">
+          <h3><span class="anatomy-swatch" style="background:#254594"></span>The Abutment</h3>
+          <p>A small connector piece that attaches the crown securely to the implant post below the gumline.</p>
+        </div>
+        <div class="anatomy-item" role="button" tabindex="0" data-layer="post">
+          <h3><span class="anatomy-swatch" style="background:#485f87"></span>The Post</h3>
+          <p>A titanium post placed directly into the jawbone, acting as an artificial tooth root. This is what makes implants so stable and long-lasting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPES -->
+  <section class="reveal" id="types">
+    <div class="section-head">
+      <h2><span class="title-lead">Which type</span> is right for you?</h2>
+      <p>Tap the option that matches what you need. We'll show what that usually means.</p>
+    </div>
+    <div class="types-grid" id="typesGrid">
+      <article class="type-card" role="button" tabindex="0" data-type="single">
+        <p class="eyebrow">One Tooth</p>
+        <h3>Single Tooth Implant</h3>
+        <p>Replaces one missing tooth without affecting the healthy teeth next to it, unlike a traditional bridge.</p>
+      </article>
+      <article class="type-card" role="button" tabindex="0" data-type="bridge">
+        <p class="eyebrow">Several Teeth</p>
+        <h3>Implant-Supported Bridge</h3>
+        <p>Two or more implants anchor a bridge, replacing several missing teeth in a row without a full denture.</p>
+      </article>
+      <article class="type-card" role="button" tabindex="0" data-type="arch">
+        <p class="eyebrow">Full Arch</p>
+        <h3>Implant-Supported Dentures</h3>
+        <p>A full set of replacement teeth secured by a small number of implants — far more stable than a removable denture.</p>
+      </article>
+    </div>
+    <div class="type-result" id="typeResult" aria-live="polite">
+      <p class="eyebrow">Your match</p>
+      <h3>Select an option above</h3>
+      <p>We'll explain who that type is usually for, and how it compares to a bridge or denture.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="reveal" id="process">
+    <div class="section-head">
+      <h2><span class="title-lead">The implant process,</span> start to finish</h2>
+      <p>Tap a step to see timing and what to expect.</p>
+    </div>
+    <div class="process-timeline" id="processList">
+      <div class="process-step is-active" role="button" tabindex="0">
+        <div class="process-step-inner">
+          <h3>Consultation &amp; Planning</h3>
+          <p>We evaluate your jawbone, gums, and overall oral health, often with a digital scan, to map out your treatment plan.</p>
+          <div class="process-extra">
+            <p>Usually one visit. You'll leave with a written plan covering timing, grafting if needed, and a cost estimate.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-step" role="button" tabindex="0">
+        <div class="process-step-inner">
+          <h3>Implant Placement</h3>
+          <p>The titanium post is placed into the jawbone under local anesthesia. Most patients describe this step as far more comfortable than expected.</p>
+          <div class="process-extra">
+            <p>Typically a single appointment. Mild soreness afterward is common and usually managed with over-the-counter pain relievers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-step" role="button" tabindex="0">
+        <div class="process-step-inner">
+          <h3>Healing &amp; Osseointegration</h3>
+          <p>Over several months, the post fuses naturally with your jawbone, creating a stable, permanent foundation.</p>
+          <div class="process-extra">
+            <p>This stage usually takes 3 to 6 months. A temporary restoration can often be worn while you heal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-step" role="button" tabindex="0">
+        <div class="process-step-inner">
+          <h3>Restoration</h3>
+          <p>Once healed, we attach the abutment and custom crown, completing your new tooth.</p>
+          <div class="process-extra">
+            <p>The crown is matched to your surrounding teeth. After this visit, you can chew, speak, and smile as you would with a natural tooth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANDIDATE QUIZ -->
+  <section class="reveal" id="candidate">
+    <div class="candidate-panel">
+      <h2><span class="title-lead">Am I a candidate</span> for implants?</h2>
+      <p style="color:var(--ink-soft); max-width:560px; margin:0 0 1.4em;">Answer a few questions. This is a starting point, not a diagnosis — we'll confirm everything at your consultation.</p>
+
+      <fieldset class="quiz-q">
+        <legend>Do you have one or more missing teeth?</legend>
+        <div class="quiz-choices">
+          <label class="quiz-choice"><input type="radio" name="q-missing" value="yes"><span>Yes</span></label>
+          <label class="quiz-choice"><input type="radio" name="q-missing" value="no"><span>No</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz-q">
+        <legend>Are your gums healthy, or has gum disease been treated?</legend>
+        <div class="quiz-choices">
+          <label class="quiz-choice"><input type="radio" name="q-gums" value="yes"><span>Yes</span></label>
+          <label class="quiz-choice"><input type="radio" name="q-gums" value="no"><span>Not yet</span></label>
+          <label class="quiz-choice"><input type="radio" name="q-gums" value="unsure"><span>Not sure</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz-q">
+        <legend>Are you in good general health?</legend>
+        <div class="quiz-choices">
+          <label class="quiz-choice"><input type="radio" name="q-health" value="yes"><span>Yes</span></label>
+          <label class="quiz-choice"><input type="radio" name="q-health" value="no"><span>It's complicated</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz-q">
+        <legend>Do you smoke heavily?</legend>
+        <div class="quiz-choices">
+          <label class="quiz-choice"><input type="radio" name="q-smoke" value="no"><span>No</span></label>
+          <label class="quiz-choice"><input type="radio" name="q-smoke" value="yes"><span>Yes</span></label>
+        </div>
+      </fieldset>
+
+      <div class="candidate-result" id="candidateResult" aria-live="polite">
+        <h3>Select your answers above</h3>
+        <p>We'll tell you whether implants are usually a fit, and what we'd look at next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST -->
+  <section class="reveal" id="cost">
+    <div class="cost-note">
+      <h2><span class="title-lead">What will</span> it cost?</h2>
+      <p>Cost depends on how many teeth you're replacing and whether bone grafting is needed. Tap what you think applies — then we'll point you to the next step.</p>
+      <div class="cost-toggles" id="costToggles">
+        <button class="cost-chip" type="button" data-graft="none">No grafting expected</button>
+        <button class="cost-chip" type="button" data-graft="maybe">Not sure about bone</button>
+        <button class="cost-chip" type="button" data-graft="yes">Grafting may be needed</button>
+      </div>
+      <div class="cost-result" id="costResult" aria-live="polite">
+        After your consultation, we'll give you a written pre-treatment estimate, and walk you through financing options including CareCredit. <a href="https://rsfamilydentalinc.solution21-websites.com/insurance-payment-options">See insurance &amp; payment options →</a>
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- FAQ -->
+  <section class="reveal" id="faq">
+    <div class="faq-head">
+      <div class="section-head">
+        <p class="eyebrow">Patient questions</p>
+        <h2><span class="title-lead">Your questions,</span> answered.</h2>
+      </div>
+      <a class="phone-btn" href="tel:+16095851410" style="text-decoration:none">
+        <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"></path>
+        </svg>
+        <span>609-585-1410</span>
+      </a>
+    </div>
+    <ul class="rs-faq__list" id="faqList">
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-last" aria-expanded="true" aria-controls="faq-a-last">
+            <span class="rs-faq__question">How long do dental implants last?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-last" role="region" aria-labelledby="faq-q-last">
+          <p>With proper care, dental implants can last 20 years or longer, and the implant post itself often lasts a lifetime. The crown on top may need replacement after 10 to 15 years of normal wear.</p>
+        </div>
+      </li>
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-hurt" aria-expanded="false" aria-controls="faq-a-hurt">
+            <span class="rs-faq__question">Does getting a dental implant hurt?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-hurt" role="region" aria-labelledby="faq-q-hurt" hidden>
+          <p>The placement procedure is done under local anesthesia, so you shouldn't feel pain during the procedure. Mild soreness afterward is normal and typically managed with over-the-counter pain relievers for a few days.</p>
+        </div>
+      </li>
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-cost" aria-expanded="false" aria-controls="faq-a-cost">
+            <span class="rs-faq__question">How much do dental implants cost?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-cost" role="region" aria-labelledby="faq-q-cost" hidden>
+          <p>Cost depends on how many teeth are being replaced and whether bone grafting is needed. We provide a written pre-treatment estimate after your consultation so you know the full cost before deciding to move forward.</p>
+        </div>
+      </li>
+      <li class="rs-faq__item">
+        <h3 class="rs-faq__q">
+          <button class="rs-faq__toggle" type="button" id="faq-q-age" aria-expanded="false" aria-controls="faq-a-age">
+            <span class="rs-faq__question">Am I too old for dental implants?</span>
+            <span class="rs-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M32 15.345h-14.945v-14.945h-2.11v14.945h-14.945v2.11h14.945v14.945h2.11v-14.945h14.945z"></path></svg>
+            </span>
+          </button>
+        </h3>
+        <div class="rs-faq__a" id="faq-a-age" role="region" aria-labelledby="faq-q-age" hidden>
+          <p>There's no upper age limit for dental implants. What matters most is having healthy gums and enough jawbone to support the implant, which we evaluate during your consultation.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<script>
+  function onActivate(el, fn){
+    el.addEventListener('click', fn);
+    el.addEventListener('keydown', function(event){
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        fn();
+      }
+    });
+  }
+
+  function activateSet(items, current, activeClass, dimClass){
+    items.forEach(function(item){
+      var on = item === current;
+      item.classList.toggle(activeClass, on);
+      if(dimClass) item.classList.toggle(dimClass, Boolean(current) && !on);
+    });
+  }
+
+  // Jump nav — highlight current section
+  var jumpLinks = document.querySelectorAll('.jump a');
+  var jumpSections = [];
+  jumpLinks.forEach(function(link){
+    var target = document.querySelector(link.getAttribute('href'));
+    if(target) jumpSections.push({ link: link, el: target });
+    link.addEventListener('click', function(){
+      jumpLinks.forEach(function(other){ other.classList.remove('is-active'); });
+      link.classList.add('is-active');
+    });
+  });
+  if('IntersectionObserver' in window){
+    var jumpIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        jumpLinks.forEach(function(link){
+          link.classList.toggle('is-active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-88px 0px -70% 0px', threshold: 0 });
+    jumpSections.forEach(function(item){ jumpIo.observe(item.el); });
+  }
+
+  // Anatomy diagram
+  var anatomyItems = document.querySelectorAll('.anatomy-item');
+  var anatomyLayers = document.querySelectorAll('.anatomy-svg .anatomy-layer');
+  var anatomyCaption = document.getElementById('anatomyCaption');
+  var anatomyCopy = {
+    crown: 'The Crown — the visible tooth',
+    abutment: 'The Abutment — connects crown to post',
+    post: 'The Post — titanium root in the jaw'
+  };
+
+  function setActiveLayer(layerName){
+    anatomyItems.forEach(function(el){
+      var on = el.dataset.layer === layerName;
+      el.classList.toggle('is-active', on);
+      el.classList.toggle('is-dim', !on);
+    });
+    anatomyLayers.forEach(function(el){
+      el.classList.toggle('is-active', el.dataset.layer === layerName);
+    });
+    if(anatomyCaption && anatomyCopy[layerName]) anatomyCaption.textContent = anatomyCopy[layerName];
+  }
+
+  anatomyItems.forEach(function(item){
+    onActivate(item, function(){ setActiveLayer(item.dataset.layer); });
+  });
+  anatomyLayers.forEach(function(layer){
+    onActivate(layer, function(){ setActiveLayer(layer.dataset.layer); });
+    layer.addEventListener('mouseenter', function(){ setActiveLayer(layer.dataset.layer); });
+  });
+  setActiveLayer('crown');
+
+  // Types of implants
+  var typeCards = document.querySelectorAll('.type-card');
+  var typeResult = document.getElementById('typeResult');
+  var selectedType = '';
+  var typeCopy = {
+    single: {
+      kicker: 'One tooth',
+      title: 'A single implant keeps neighboring teeth untouched',
+      body: 'Best when one tooth is missing. Unlike a traditional bridge, we do not grind down the healthy teeth on either side. After your consultation we can confirm bone volume and give you a written estimate.'
+    },
+    bridge: {
+      kicker: 'Several teeth',
+      title: 'Two implants can replace a whole gap',
+      body: 'Best when several teeth in a row are missing. Fewer implants than one-per-tooth, more stable than a removable partial. We will map the span at your consult and walk through cost and timing.'
+    },
+    arch: {
+      kicker: 'Full arch',
+      title: 'A small number of implants can secure a full set',
+      body: 'Best when most or all teeth in an arch need replacing. Far more stable than a removable denture. We will evaluate jawbone, grafting if needed, and financing — including CareCredit — before you decide.'
+    }
+  };
+
+  function renderType(type){
+    selectedType = type;
+    var data = typeCopy[type];
+    if(!data || !typeResult) return;
+    typeResult.classList.add('is-picked');
+    typeResult.innerHTML = '<p class="eyebrow">' + data.kicker + '</p><h3>' + data.title + '</h3><p>' + data.body + '</p>';
+    renderCost();
+  }
+
+  typeCards.forEach(function(card){
+    onActivate(card, function(){
+      activateSet(typeCards, card, 'is-active', 'is-dim');
+      renderType(card.dataset.type);
+    });
+  });
+
+  // Process timeline
+  var processSteps = document.querySelectorAll('.process-step');
+  processSteps.forEach(function(step){
+    onActivate(step, function(){
+      activateSet(processSteps, step, 'is-active');
+    });
+  });
+
+  // Candidate quiz
+  var quizInputs = document.querySelectorAll('#candidate input[type="radio"]');
+  var candidateResult = document.getElementById('candidateResult');
+
+  function val(name){
+    var el = document.querySelector('#candidate input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  function renderCandidate(){
+    var missing = val('q-missing');
+    var gums = val('q-gums');
+    var health = val('q-health');
+    var smoke = val('q-smoke');
+    if(!missing || !gums || !health || !smoke || !candidateResult) return;
+
+    candidateResult.classList.remove('is-yes', 'is-maybe');
+
+    if(missing === 'no'){
+      candidateResult.classList.add('is-maybe');
+      candidateResult.innerHTML = '<h3>Implants replace teeth that are already gone</h3><p>If a tooth is failing or you are considering extraction, we can still talk through whether an implant is the right next step. Book a consult and we will look at the whole picture.</p><a href="/contact-us" class="btn btn-primary">Book a Consultation</a>';
+      return;
+    }
+
+    if(gums === 'no' || health === 'no' || smoke === 'yes'){
+      candidateResult.classList.add('is-maybe');
+      candidateResult.innerHTML = '<h3>You may still be a candidate — we need to evaluate</h3><p>Gum health, medical history, and smoking all affect implant success. None of these automatically rules you out. We treat gum disease first when needed, and we will be honest about timing and risk at your consultation.</p><a href="/contact-us" class="btn btn-primary">Book a Consultation</a>';
+      return;
+    }
+
+    if(gums === 'unsure'){
+      candidateResult.classList.add('is-maybe');
+      candidateResult.innerHTML = '<h3>Let’s check your gums and bone first</h3><p>Most healthy adults are candidates. We will evaluate gum health and jawbone at your consult — often with a digital scan — before recommending a plan.</p><a href="/contact-us" class="btn btn-primary">Book a Consultation</a>';
+      return;
+    }
+
+    candidateResult.classList.add('is-yes');
+    candidateResult.innerHTML = '<h3>You look like a strong candidate</h3><p>Healthy gums, good general health, and missing teeth are the usual starting point. The last check is jawbone volume, which we confirm at your consultation with a written plan and estimate before anything is scheduled.</p><a href="/contact-us" class="btn btn-secondary">Book a Consultation</a>';
+  }
+
+  quizInputs.forEach(function(input){
+    input.addEventListener('change', renderCandidate);
+  });
+
+  // Cost chips
+  var costChips = document.querySelectorAll('.cost-chip');
+  var costResult = document.getElementById('costResult');
+  var selectedGraft = '';
+  var typeLabels = { single: 'a single-tooth implant', bridge: 'an implant-supported bridge', arch: 'a full-arch restoration' };
+
+  function renderCost(){
+    if(!costResult) return;
+    var typeBit = selectedType ? ' For ' + typeLabels[selectedType] + ',' : '';
+    var graftBit = {
+      none: ' If bone grafting is not needed, the estimate is usually simpler and treatment can move to placement sooner.',
+      maybe: ' If we are unsure about bone, a scan at your consult will tell us whether grafting is part of the plan — and what that adds in time and cost.',
+      yes: ' If grafting is needed, we include it in the written estimate so you see the full picture before deciding. Healing time is longer, but it creates a stable foundation.'
+    };
+    var extra = selectedGraft ? graftBit[selectedGraft] : ' After your consultation, we will give you a written pre-treatment estimate.';
+    costResult.innerHTML = (typeBit ? typeBit.trim() : 'Cost depends on how many teeth you are replacing.') + extra + ' We will also walk you through financing, including CareCredit. <a href="https://rsfamilydentalinc.solution21-websites.com/insurance-payment-options">See insurance &amp; payment options →</a>';
+  }
+
+  costChips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      activateSet(costChips, chip, 'is-active');
+      selectedGraft = chip.dataset.graft;
+      renderCost();
+    });
+  });
+
+  // FAQ accordion — same behavior as the live site
+  (function(){
+    var items = Array.from(document.querySelectorAll('#faqList .rs-faq__item'));
+    function setExpanded(item, open){
+      var toggle = item.querySelector('.rs-faq__toggle');
+      var panel = item.querySelector('.rs-faq__a');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.hidden = !open;
+    }
+    function closeAll(except){
+      items.forEach(function(item){
+        if(item !== except) setExpanded(item, false);
+      });
+    }
+    items.forEach(function(item){
+      var toggle = item.querySelector('.rs-faq__toggle');
+      toggle.addEventListener('click', function(){
+        var willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+        closeAll(item);
+        setExpanded(item, willOpen);
+      });
+    });
+  })();
+
+  // Scroll-reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+</script>
+
+</body>
+</html>

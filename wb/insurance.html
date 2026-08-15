@@ -26,6 +26,7 @@
     box-shadow: none;
     text-decoration: none;
   }
+  .rs-ins a,
   .rs-ins a:hover,
   .rs-ins a:focus,
   .rs-ins a:visited {
@@ -647,82 +648,41 @@
   }
   .rs-ins__verify {
     display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: 24px;
-    align-items: stretch;
-  }
-  .rs-ins__steps {
-    margin: 8px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-  .rs-ins__steps li {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 20px;
     align-items: start;
+  }
+  .rs-ins__form-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+  }
+  .rs-ins__form-link .rs-ins__cta {
+    text-decoration: none;
+  }
+  .rs-ins__form-note {
     margin: 0;
-    padding: 14px 0;
-    font-size: 17px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 24px;
     color: var(--rs-ins-secondary);
   }
-  .rs-ins__steps li + li {
-    border-top: 1px solid #9daccd33;
+  .rs-ins__form-note a {
+    color: var(--rs-ins-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .rs-ins__steps span {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--rs-ins-text);
-    color: var(--rs-ins-white);
-    font-size: 14px;
-    line-height: 1;
-  }
-  .rs-ins__embed-wrap {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    background: var(--rs-ins-row);
-  }
-  .rs-ins__embed {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 420px;
-    padding: 28px;
-    border-radius: 4px;
-    background: var(--rs-ins-white);
-    color: var(--rs-ins-secondary);
-  }
-  .rs-ins__embed-label {
-    margin: 0 0 8px;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  .rs-ins__form-note a:hover,
+  .rs-ins__form-note a:focus-visible {
     color: var(--rs-ins-accent);
   }
-  .rs-ins__embed h3 {
-    margin: 0 0 10px;
-    font-size: 24px;
-    font-weight: 600;
+  .rs-ins__section-copy a {
     color: var(--rs-ins-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .rs-ins__embed p {
-    margin: 0;
-    max-width: 380px;
-    font-size: 17px;
-    line-height: 26px;
-  }
-  .rs-ins__embed a {
-    color: var(--rs-ins-text);
-  }
-  .rs-ins__embed a:hover {
+  .rs-ins__section-copy a:hover,
+  .rs-ins__section-copy a:focus-visible {
     color: var(--rs-ins-accent);
   }
   .rs-ins__pay {
@@ -1165,19 +1125,12 @@
       <div class="rs-ins__section-head">
         <p class="rs-ins__kicker">No guesswork</p>
         <h2 class="rs-ins__section-title" id="rs-ins-verify">Free Benefits Verification</h2>
-        <p class="rs-ins__section-copy">Not sure what your plan covers? Fill out the short form below with your insurance carrier, plan, and member details, and our team will follow up with a written estimate before you commit to any treatment.</p>
+        <p class="rs-ins__section-copy">Not sure what your plan covers? Fill out the short <a class="rs-ins__benefits-form-link" href="/patient-forms" target="_blank" rel="noopener noreferrer">HIPAA-compliant form</a> with your insurance carrier, plan, and member details, and our team will follow up with a written estimate before you commit to any treatment.</p>
       </div>
-      <div class="rs-ins__embed-wrap">
-        <!--
-          HIPAA-compliant form embed — replace the inner node below with the
-          vendor snippet from item #21. Do not collect member IDs or plan
-          details in a non-HIPAA HTML form.
-        -->
-        <div class="rs-ins__embed" id="rs-ins-benefits-form" data-embed-slot="hipaa-benefits-verification">
-          <p class="rs-ins__embed-label">Secure form</p>
-          <h3>Request a written estimate</h3>
-          <p>The HIPAA-compliant benefits form will appear in this panel. Until it is embedded, call <a href="tel:+16095851410">(609) 585-1410</a> and we will verify your coverage by phone.</p>
-        </div>
+      <div class="rs-ins__form-link">
+        <!-- HIPAA-compliant benefits form: link out to the hosted form (item #21). Do not embed or collect member details on this page. -->
+        <a class="rs-ins__cta" id="rs-ins-benefits-form" href="/patient-forms" target="_blank" rel="noopener noreferrer">Open the benefits verification form</a>
+        <p class="rs-ins__form-note">Opens a secure HIPAA-compliant form in a new tab. Or call <a href="tel:+16095851410">(609) 585-1410</a>.</p>
       </div>
     </div>
   </section>
@@ -1456,7 +1409,7 @@
         html = "<p class=\"rs-ins__result-kicker\">Payment options</p><h3>Payment and Financing Options</h3><p>We accept major credit cards — Visa, MasterCard, American Express, and Discover — cash and personal checks, CareCredit, and FSA and HSA cards. Before any treatment beyond a routine exam or cleaning, we provide a written pre-treatment estimate outlining the recommended procedure, the cost, and what your insurance is expected to cover.</p>";
       }
 
-      html += "<div class=\"rs-ins__result-actions\"><button class=\"rs-ins__cta\" type=\"button\" data-go=\"#rs-ins-verify\">Get a written estimate</button><a class=\"rs-ins__cta rs-ins__cta--ghost\" href=\"tel:+16095851410\">Call (609) 585-1410</a></div>";
+      html += "<div class=\"rs-ins__result-actions\"><a class=\"rs-ins__cta\" href=\"/patient-forms\" target=\"_blank\" rel=\"noopener noreferrer\">Open the benefits verification form</a><a class=\"rs-ins__cta rs-ins__cta--ghost\" href=\"tel:+16095851410\">Call (609) 585-1410</a></div>";
       result.innerHTML = html;
     }
 
