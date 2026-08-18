@@ -1,413 +1,47 @@
-<style>
-    :root {
-          --ink: #37503c;
-          --muted: #5c564c;
-          --cream: #faf6ee;
-          --card: #ffffff;
-          --btn: #243830;
-          --btn-side: #2a2620;
-          --gold: #b98f2c;
-          --shadow: 4px 20px 30px rgba(36, 56, 48, 0.15);
-          --card-width: 336px;
-          --stage-height: 520px;
-          --card-pad: 16px;
-          --card-gap: 16px;
-          --card-image: 304px;
-          --side-scale: 0.816;
-          --side-offset: 340px;
-          --enter-offset: 520px;
-          --arrow-gap: 28px;
-          --arrow-inset: calc(
-            var(--side-offset) + (var(--card-width) * var(--side-scale) / 2) + var(--arrow-gap)
-          );
-          --slide-ease: cubic-bezier(0.22, 1, 0.36, 1);
-          --slide-duration: 0.6s;
+<!-- CHERRY WIDGET BEGIN -->
+<div style="height:auto;">
+  <div id="all" style="height:auto;">
+  </div>
+  <div id="hero">
+  </div>
+  <div id="calculator">
+  </div>
+  <div id="howitworks">
+  </div>
+  <div id="testimony">
+  </div>
+  <div id="faq">
+  </div>
+  <script>
+   (function (w, d, s, o, f, js, fjs) {
+        w[o] = w[o] || function () {
+            (w[o].q = w[o].q || []).push(arguments);
+        };
+        (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+        js.id = o;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+    })(window, document, "script", "_hw", "https://files.withcherry.com/widgets/widget.js");
+    _hw("init", {
+        debug: false,
+        variables: {
+            slug: 'village-dentistry-in',
+            name: "Village Dentistry - Indianapolis",
+            images: [17],
+            customLogo: 'https://irp.cdn-website.com/e67e2d9d/dms3rep/multi/village_dentistry_logo.svg',
+            defaultPurchaseAmount: 2000,
+            customImage: '', 
+            imageCategory: 'dental',
+            language: 'en',
+        },
+        styles: {
+            primaryColor: '#37503c',
+            secondaryColor: '#b98f2c',
+            fontFamily: 'Open Sans',
+            headerFontFamily: 'Open Sans',
         }
-        .gallery {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          min-height: 100vh;
-          overflow: hidden;
-          padding: 2rem 3.5rem;
-        }
-        .cards {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: min(100%, calc(var(--side-offset) * 2 + var(--card-width)));
-          height: var(--stage-height);
-          margin: 0;
-          padding: 0;
-        }
-        .cards li {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          width: var(--card-width);
-          height: auto;
-          opacity: 0;
-          pointer-events: none;
-          transform: translate(-50%, -50%) scale(var(--side-scale));
-          transform-origin: center center;
-          z-index: 1;
-          will-change: transform, opacity;
-        }
-        .cards.is-ready li {
-          transition:
-            transform var(--slide-duration) var(--slide-ease),
-            opacity calc(var(--slide-duration) * 0.75) ease;
-        }
-        .cards li.is-instant {
-          transition: none !important;
-        }
-        .cards li[data-slot="prev"] {
-          opacity: 1;
-          pointer-events: auto;
-          transform: translate(calc(-50% - var(--side-offset)), -50%) scale(var(--side-scale));
-          z-index: 2;
-        }
-        .cards li[data-slot="active"] {
-          opacity: 1;
-          pointer-events: auto;
-          transform: translate(-50%, -50%) scale(1);
-          z-index: 4;
-        }
-        .cards li[data-slot="next"] {
-          opacity: 1;
-          pointer-events: auto;
-          transform: translate(calc(-50% + var(--side-offset)), -50%) scale(var(--side-scale));
-          z-index: 2;
-        }
-        .cards li[data-slot="enter-left"] {
-          opacity: 0;
-          pointer-events: none;
-          transform: translate(calc(-50% - var(--enter-offset)), -50%) scale(0.72);
-          z-index: 1;
-        }
-        .cards li[data-slot="enter-right"] {
-          opacity: 0;
-          pointer-events: none;
-          transform: translate(calc(-50% + var(--enter-offset)), -50%) scale(0.72);
-          z-index: 1;
-        }
-        .cards li[data-slot="prev"] .card__cta,
-        .cards li[data-slot="next"] .card__cta {
-          background: var(--btn-side);
-        }
-        .card {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          gap: var(--card-gap);
-          width: 100%;
-          height: auto;
-          padding: var(--card-pad);
-          overflow: hidden;
-          background: var(--card);
-          color: #37503c;
-          transition: box-shadow var(--slide-duration) ease;
-        }
-        .cards li[data-slot="active"] .card {
-          box-shadow: var(--shadow);
-        }
-        .card__media {
-          position: relative;
-          width: 100%;
-          height: var(--card-image);
-          flex-shrink: 0;
-          overflow: hidden;
-        }
-        .card__media img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-        }
-        .card__body {
-          display: flex;
-          flex: 0 0 auto;
-          flex-direction: column;
-          align-items: stretch;
-          gap: 12px;
-          width: 100%;
-          min-width: 0;
-        }
-        .card__name {
-          margin: 0;
-          flex-shrink: 0;
-          max-width: 100%;
-          font-size: 20px;
-          font-weight: 400;
-          line-height: 1.25;
-          letter-spacing: -0.72px;
-          color: #37503c !important;
-          overflow-wrap: break-word;
-        }
-        .card__desc {
-          margin: 0;
-          flex: 0 0 auto;
-          width: 100%;
-          max-width: 100%;
-          min-width: 0;
-          max-height: 72px;
-          color: #5c564c;
-          font-size: 16px;
-          font-weight: 300;
-          line-height: 24px;
-          white-space: normal !important;
-          overflow-wrap: break-word;
-          word-wrap: break-word;
-          word-break: break-word;
-          display: -webkit-box !important;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 3;
-          line-clamp: 3;
-          overflow: hidden !important;
-          text-overflow: ellipsis;
-        }
-        .card__cta {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          align-self: flex-start;
-          flex: 0 0 auto;
-          min-width: 150px;
-          margin-top: 0;
-          padding: 10px 16px;
-          background: var(--btn);
-          color: var(--cream);
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 1.2;
-          text-decoration: none;
-          white-space: nowrap;
-          transition: background-color 0.45s ease;
-        }
-        .card__cta:hover {
-          background: var(--ink);
-        }
-        .card__cta:focus-visible {
-          outline: 2px solid var(--gold);
-          outline-offset: 3px;
-        }
-        .nav-arrow {
-          position: absolute;
-          z-index: 5;
-          top: 50%;
-          display: grid;
-          place-items: center;
-          width: 24px;
-          height: 24px;
-          padding: 0;
-          border: 0;
-          background: transparent;
-          cursor: pointer;
-          transform: translateY(-50%);
-          transition: transform 0.2s ease;
-        }
-        .nav-arrow.prev {
-          left: max(0.75rem, calc(50% - var(--arrow-inset) - 12px));
-        }
-        .nav-arrow.next {
-          right: max(0.75rem, calc(50% - var(--arrow-inset) - 12px));
-        }
-        .nav-arrow img {
-          display: block;
-          width: 24px;
-          height: 24px;
-          transform: none !important;
-        }
-        .nav-arrow:hover {
-          transform: translateY(-50%) scale(1.08);
-        }
-        .nav-arrow:focus-visible {
-          outline: 2px solid var(--gold);
-          outline-offset: 3px;
-          border-radius: 999px;
-        }
-        @media (max-width: 900px) {
-          :root {
-            --card-width: 274px;
-            --stage-height: 460px;
-            --card-pad: 13px;
-            --card-gap: 13px;
-            --card-image: 248px;
-            --side-scale: 0.9;
-            --side-offset: 270px;
-            --enter-offset: 420px;
-          }
-          .gallery {
-            padding: 2rem 2.5rem;
-          }
-          .nav-arrow.prev {
-            left: 0.75rem;
-          }
-          .nav-arrow.next {
-            right: 0.75rem;
-          }
-        }
-        @media (max-width: 640px) {
-          .cards li[data-slot="prev"],
-          .cards li[data-slot="next"] {
-            opacity: 0;
-            pointer-events: none;
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .cards.is-ready li,
-          .card,
-          .card__cta,
-          .nav-arrow {
-            transition: none;
-            animation: none;
-          }
-        }
-   </style>
-   <main class="gallery" aria-label="Team carousel">
-    <ul class="cards">
-     <li>
-      <article class="card">
-       <div class="card__media">
-        <img src="https://irp.cdn-website.com/e67e2d9d/dms3rep/multi/Emily-Thomas.jpg" alt="Dr. Nicole Van Le treating a patient" width="304" height="304">
-       </div>
-       <div class="card__body">
-        <h3 class="card__name">
-         Dr. Emily Thomas
-        </h3>
-        <p class="card__desc">
-         Dr. Thomas is a native of Indianapolis.  She attended Roncalli High School and graduated from Indiana-University-Purdue University Indianapolis with a Bachelor of Science in Biology.
-        </p>
-        <a class="card__cta" href="/our-team">
-         Read More
-        </a>
-       </div>
-      </article>
-     </li>
-     <li>
-      <article class="card">
-       <div class="card__media">
-        <img src="https://irp.cdn-website.com/e67e2d9d/dms3rep/multi/dr-van-le.jpg" alt="Dr. Nicole Van Le treating a patient" width="304" height="304">
-       </div>
-       <div class="card__body">
-        <h3 class="card__name">
-         Nicole Van Le DDS
-        </h3>
-        <p class="card__desc">
-         Dr. Van Le built Village Dentistry on a simple belief: people put
-                  off the dentist because the dentist feels clinical and rushed
-        </p>
-        <a class="card__cta" href="/our-team">
-         Read More
-        </a>
-       </div>
-      </article>
-     </li>
-     <li>
-      <article class="card">
-       <div class="card__media">
-        <img src="assets/nicole-van-le.png" alt="Dr. Nicole Van Le treating a patient" width="304" height="304">
-       </div>
-       <div class="card__body">
-        <h3 class="card__name">
-         Nicole Van Le DDS
-        </h3>
-        <p class="card__desc">
-         Dr. Van Le built Village Dentistry on a simple belief: people put
-                  off the dentist because the dentist feels clinical and rushed
-        </p>
-        <a class="card__cta" href="/our-team">
-         Read More
-        </a>
-       </div>
-      </article>
-     </li>
-    </ul>
-    <button class="nav-arrow prev" type="button" aria-label="Previous card">
-     <img src="https://irp.cdn-website.com/e67e2d9d/dms3rep/multi/keyboard_arrow_up.svg" alt="" width="24" height="24">
-    </button>
-    <button class="nav-arrow next" type="button" aria-label="Next card">
-     <img src="https://irp.cdn-website.com/e67e2d9d/dms3rep/multi/keyboard_arrow_up2.svg" alt="" width="24" height="24">
-    </button>
-   </main>
-    <script>
-    const track = document.querySelector(".cards");
-  const cards = Array.from(document.querySelectorAll(".cards li"));
-  const prev = document.querySelector(".prev");
-  const next = document.querySelector(".next");
-  const DURATION = 600;
-  const AUTOPLAY_MS = 4000;
-  let activeIndex = 1;
-  let busy = false;
-  let autoplayId = null;
-  function slotFor(index) {
-    const total = cards.length;
-    const offset = (index - activeIndex + total) % total;
-    if (offset === 0) return "active";
-    if (offset === total - 1) return "prev";
-    if (offset === 1) return "next";
-    return "hidden";
-  }
-  function render() {
-    cards.forEach((card, index) => {
-      card.dataset.slot = slotFor(index);
-    });
-  }
-  function step(delta) {
-    if (busy) return false;
-    busy = true;
-    const total = cards.length;
-    const wrapIndex =
-      delta > 0
-        ? (activeIndex - 1 + total) % total
-        : (activeIndex + 1) % total;
-    const wrapCard = cards[wrapIndex];
-    // Teleport the wrapping card off-screen on the entry side so it
-    // never crosses through the active card.
-    wrapCard.classList.add("is-instant");
-    wrapCard.dataset.slot = delta > 0 ? "enter-right" : "enter-left";
-    void wrapCard.offsetWidth;
-    wrapCard.classList.remove("is-instant");
-    activeIndex = (activeIndex + delta + total) % total;
-    render();
-    window.setTimeout(() => {
-      busy = false;
-    }, DURATION);
-    return true;
-  }
-  function stopAutoplay() {
-    if (autoplayId !== null) {
-      window.clearInterval(autoplayId);
-      autoplayId = null;
-    }
-  }
-  function startAutoplay() {
-    stopAutoplay();
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    autoplayId = window.setInterval(() => {
-      if (document.hidden) return;
-      step(1);
-    }, AUTOPLAY_MS);
-  }
-  function manualStep(delta) {
-    if (step(delta)) startAutoplay();
-  }
-  prev.addEventListener("click", () => manualStep(-1));
-  next.addEventListener("click", () => manualStep(1));
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopAutoplay();
-    else startAutoplay();
-  });
-  render();
-  requestAnimationFrame(() => {
-    track.classList.add("is-ready");
-    startAutoplay();
-  });
-   </script>
+    }, ['hero','calculator','howitworks','faq']);
+  </script>
+ </div>
+ <!-- CHERRY WIDGET END -->
